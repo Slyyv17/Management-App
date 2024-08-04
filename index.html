@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Task Aura </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="shortcut icon" href="assets/img/TASK AURA.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Desktop mode -->
+    <nav class="nav-container" aria-labelledby="desktop-mode">
+        <div class="logo">
+            <img src="assets/img/TASK AURA.png" alt="logo-pic">
+        </div>
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="uil uil-search"></i> <span>search</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-list-ul"></i> <span>tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-rocket"></i> <span>projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-notes"></i> <span>notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-graph-bar"></i> <span>statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-setting"></i> <span>setting</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Mobile view -->
+    <nav class="nav-cont" aria-labelledby="responsive-devices">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="uil uil-search"></i> <span>search</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-list-ul"></i> <span>tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-rocket"></i> <span>projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-notes"></i> <span>notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-graph-bar"></i> <span>statistics</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <article>
+                <div class="title-article">
+                    <div class="username"> Hello, </div>
+
+                    <div class="search-box">
+                        <input type="search" id="search-bar" placeholder="Search tasks, projects and notes...">
+                        <button>
+                            <i class="uil uil-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="dashboard">
+
+                </div>
+            </article>
+
+            <!-- Side article -->
+            <article>
+                <div class="stats"></div>
+                <div class="tot-proj"></div>
+                <div class="tot-task"></div>
+                <div class="overdue-task"></div>
+                <div class="completed-proj"></div>
+                <div class="ong-proj"></div>
+                <div class="on-hold-proj"></div>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

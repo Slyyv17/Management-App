@@ -1,0 +1,319 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pry-clr: rgb(0, 170, 255);
+    --bg-clr: rgb(21, 24, 26);
+    --sec-clr: #fff;
+    --tet-clr: rgb(138, 148, 153);
+    --bg-drop: #FAFAFB;
+    --main-clr: #000;
+    --ff: 'Satoshi', sans-serif;
+    --bx-shadow: rgb(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--ff);
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    max-width: 3em;
+    /* border: 1px solid #000; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    background-color: var(--bg-clr);
+    color: var(--sec-clr);
+    overflow: hidden;
+    transition: max-width 0.3s ease;
+}
+
+.nav-container:hover {
+    max-width: 12em;
+}
+
+.nav-container .logo {
+    width: 2.5em;
+    aspect-ratio: 1/1;
+    border: none;
+    margin: 1em 0;
+    display: grid;
+    place-items: center;
+    background-color: var(--sec-clr);
+    border-radius: 50%;
+    transition: width 0.3s ease;
+}
+
+.nav-container:hover .logo {
+    width: 4em;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-container ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.nav-container ul li {
+    width: 100%;
+    color: var(--sec-clr);
+    text-align: center;
+    padding: 0.5em 0;
+    border-radius: 0.5em;
+    transition: background-color 600ms;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container ul li:hover {
+    background-color: var(--pry-clr);
+}
+
+.nav-container ul li a {
+    text-decoration: none;
+    color: inherit;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    gap: 0.5em;
+    white-space: nowrap;
+}
+
+.nav-container ul li a span {
+    display: none;
+}
+
+.nav-container:hover ul li a span {
+    display: inline;
+}
+
+.nav-cont {
+    display: none;
+}
+
+/* main container */
+main {
+    width: 100%;
+    height: fit-content;
+    /* border: 1px dashed red; */
+    background-color: white;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-drop);
+}
+
+main section {
+    width: 100%;
+    max-width: 100%;
+    height: fit-content;
+    /* border: 1px dashed black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section article {
+    height: fit-content;
+    /* border: 1px dashed blue; */
+}
+
+section article:nth-child(1) {
+    width: 70%;
+    display: grid;
+    place-items: center;
+    gap: 1em;
+}
+
+section article:nth-child(2) {
+    width: 30%;
+    background: var(--bg-drop);
+    display: grid;
+    place-items: center;
+    gap: 1em;
+    padding-top: 1em;
+}
+
+article .title-article {
+    width: 100%;
+    max-width: 60em;
+    /* border: 1px dashed red; */
+    height: fit-content;
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-article .username {
+    width: 100%;
+    max-width: 15em; 
+    border: 1px dashed var(--sec-clr);
+    border-radius: 1em;
+    box-shadow: 2px 2px 3px var(--bx-shadow);
+    height: 2.5em;
+    background-color: var(--sec-clr);
+    display: flex;
+    justify-content: start;
+    padding-left: 1em;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.title-article .search-box {
+    width: 100%;
+    max-width: 30em;
+    height: fit-content;
+    border: 1px solid var(--bx-shadow);
+    box-shadow: 2px 2px 3px var(--bx-shadow);
+    border-radius: 1em;
+    height: 2em;
+}
+
+.search-box #search-bar {
+    width: 100%;
+    max-width: 95%;
+    height: 2em;
+    border: none;
+    border-radius: inherit;
+    padding-left: 1em;
+    font-family: var(--ff);
+    color: var(--main-clr);
+}
+
+#search-bar:focus {
+    border: none;
+    outline: 0;
+}
+
+.search-box button {
+    background-color: var(--sec-clr);
+    color: var(--tet-clr);
+}
+
+article .dashboard {
+    width: 100%;
+    max-width: 60em;
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    height: 45em;
+    background-color: var(--sec-clr);
+}
+
+/* ---- article two ---- */
+
+article:nth-child(2) :is(.stats) {
+    width: 100%;
+    max-width: 80%;
+    height: 15em;
+    border: 1px solid var(--sec-clr);
+    background-color: var(--sec-clr);
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    border-radius: 1em;
+}
+
+article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .ong-proj, .on-hold-proj) {
+    width: 100%;
+    max-width: 70%;
+    border: 1px solid var(--sec-clr);
+    height: 3em;
+    background-color: var(--sec-clr);
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+        display: none;
+    }
+
+    .nav-cont {
+        width: 100%;
+        background-color: var(--bg-clr);
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3em;
+        z-index: 100;
+    }
+
+    .nav-cont ul {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        gap: 1em;
+    }
+
+    .nav-cont ul li {
+        flex: 1;
+        color: var(--sec-clr);
+        text-align: center;
+        padding: 0.5em 0;
+        border-radius: 5px;
+        display: grid;
+        place-items: center;
+    }
+
+    .nav-cont ul li a {
+        text-decoration: none;
+        color: inherit;
+        text-transform: capitalize;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0.2em;
+        gap: 0.1em;
+        transition: color 600ms;
+    }
+
+    .nav-cont ul li a:hover {
+        color: var(--pry-clr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-container {
+        display: none;
+    }
+
+    .nav-cont {
+        width: 100%;
+        background-color: var(--bg-clr);
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 3em;
+        bottom: 0;
+        z-index: 100;
+    }
+}
