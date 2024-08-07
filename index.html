@@ -99,8 +99,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard">
-
+                <div class="dashboard" id="Dashboard">
                 </div>
             </article>
 
@@ -121,6 +120,47 @@
                 <button id="close-btn">
                     <i class="uil uil-times"></i>
                 </button>
+            </div>
+
+            <div class="task-space">
+                <div class="create-space">
+                    <h2> Create A New Task </h2>
+                    <button id="task-btn">
+                        <i class="uil uil-plus"></i>
+                    </button>
+
+                    <button id="close-tsk-ctn">
+                        <i class="uil uil-times"></i>
+                    </button>
+                </div>
+
+                <form id="task-creation" style="display: none;">
+                    <input type="text" id="task-name" placeholder="Task name..." />
+                    <textarea id="about-task" rows="2" placeholder="About task..."></textarea>
+                    
+                    <label for="start-date"> start date </label>
+                    <div class="start-dd-box date-box">
+                        <input type="date" id="start-dd">
+                    </div>
+
+                    <label for="end-date"> end date </label>
+                    <div class="end-dd-box date-box">
+                        <input type="date" id="end-dd">
+                    </div>
+
+                    <div class="sub-task-box">
+                        <div class="sub-task-heading">
+                            <label for="Requirements"> sub-tasks </label>
+                            <button>
+                                <i class="uil uil-plus"></i>
+                            </button>
+                        </div>
+
+                        <div id="sub-task-body">
+
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </main>

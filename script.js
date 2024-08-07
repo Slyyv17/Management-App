@@ -11,3 +11,18 @@ document.addEventListener("DOMContentLoaded", function() {
         taskBox.style.display = "none";
     });
 });
+
+// task creation
+document.addEventListener("DOMContentLoaded", function() {
+    const taskBtn = document.getElementById("task-btn");
+    const closeTskCtn = document.getElementById("close-tsk-ctn");
+    const taskCreation = document.getElementById("task-creation");
+
+    taskBtn.addEventListener("click", function() {
+        taskCreation.style.display = "flex";
+    });
+
+    closeTskCtn.addEventListener("click", function() {
+        taskCreation.style.display = "none";
+    })
+});

@@ -10,7 +10,7 @@
     --pry-clr: rgb(0, 170, 255);
     --bg-clr: rgb(21, 24, 26);
     --sec-clr: #fff;
-    --tet-clr: rgb(138, 148, 153);
+    --tet-clr: rgb(78, 78, 78);
     --bg-drop: #FAFAFB;
     --main-clr: #000;
     --ff: 'Satoshi', sans-serif;
@@ -284,6 +284,154 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 
 #Task-box .close-box button:hover {
     color: var(--sec-clr);
+}
+
+.task-space {
+    width: 100%;
+    /* border: 1px dashed black; */
+    height: fit-content;
+}
+
+.task-space .create-space {
+    width: 100%;
+    /* border: 1px dashed red; */
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    gap: 1em;
+    padding: 0.5em;
+}
+
+.create-space button {
+    width: 3em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    color: var(--sec-clr);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.create-space #task-btn {
+    background-color: var(--pry-clr);
+}
+
+.create-space #close-tsk-ctn {
+    background-color: var(--close-btn);
+}
+
+#task-creation {
+    width: 100%;
+    /* border: 1px dashed red; */
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    flex-direction: column;
+    padding: 1em;
+
+}
+
+#task-name {
+    width: 100%;
+    max-width: 40%;
+    height: 3em;
+    border: 1px solid var(--sec-clr);
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    padding-left: 1em;
+    font-family: var(--ff);
+    font-size: 1rem;
+    border-radius: 1.5em;
+    caret-color: var(--tet-clr);
+}
+
+#about-task {
+    width: 100%;
+    max-width: 60%;
+    resize: vertical;
+    padding: 1em 0 0 1em;
+    font-family: var(--ff);
+    font-size: 1rem;
+    border-radius: 1.5em;
+    border: 1px solid var(--sec-clr);
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    caret-color: var(--tet-clr);
+}
+
+:where(#task-name, #about-task):focus {
+    border: 1px solid transparent;
+    outline: none;
+}
+
+#task-creation label {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--tet-clr);
+}
+
+#task-creation :is(.start-dd-box, .end-dd-box){
+    width: 100%;
+    max-width: 20%;
+    border: 1px solid var(--sec-clr);
+    height: 3em;
+    background-color: var(--sec-clr);
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    display: grid;
+    place-items: center;
+}
+
+.date-box :is(#start-dd, #end-dd) {
+    width: 100%;
+    font-size: 1rem;
+    height: 2.5em;
+    border-radius: 1em;
+    border: 1px solid var(--sec-clr);
+    padding: 0.5em;
+}
+
+.date-box :is(#start-dd, #end-dd):focus {
+    border: 1px solid transparent;
+    outline: none;
+}
+
+#task-creation .sub-task-box {
+    width: 100%;
+    max-width: 50%;
+    /* border: 1px solid red; */
+    height: fit-content;
+    display: grid;
+    place-content: left;
+    gap: 1em;
+    padding-top: 0.1em;
+}
+
+.sub-task-box :is(.sub-task-heading, #sub-task-body) {
+    width: 100%;
+    /* border: 1px dashed red; */
+    height: fit-content;
+}
+
+.sub-task-heading label {
+    text-transform: capitalize;
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: var(--tet-clr);
+}
+
+.sub-task-heading button {
+    width: 2em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
+    font-size: 1.1rem;
+    cursor: pointer;
 }
 
 
