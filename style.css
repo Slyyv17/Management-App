@@ -223,7 +223,6 @@ article .dashboard {
     place-items: start;
     padding: 1em;
     font-family: var(--ff);
-    font-size: 2rem;
 }
 
 /* #Dashboard {
