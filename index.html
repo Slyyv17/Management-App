@@ -100,6 +100,7 @@
                 </div>
 
                 <div class="dashboard" id="Dashboard">
+                    <h3> Tasks, Projects, and Notes... </h3>
                 </div>
             </article>
 
@@ -128,39 +129,36 @@
                     <button id="task-btn">
                         <i class="uil uil-plus"></i>
                     </button>
-
-                    <button id="close-tsk-ctn">
+                    <button id="close-tsk-ctn" style="display: none;">
                         <i class="uil uil-times"></i>
                     </button>
-                </div>
-
-                <form id="task-creation" style="display: none;">
-                    <input type="text" id="task-name" placeholder="Task name..." />
-                    <textarea id="about-task" rows="2" placeholder="About task..."></textarea>
                     
-                    <label for="start-date"> start date </label>
-                    <div class="start-dd-box date-box">
-                        <input type="date" id="start-dd">
-                    </div>
-
-                    <label for="end-date"> end date </label>
-                    <div class="end-dd-box date-box">
-                        <input type="date" id="end-dd">
-                    </div>
-
-                    <div class="sub-task-box">
-                        <div class="sub-task-heading">
-                            <label for="Requirements"> sub-tasks </label>
-                            <button>
-                                <i class="uil uil-plus"></i>
-                            </button>
+                    <form id="task-creation">
+                        <input type="text" id="task-name" placeholder="Task name..." />
+                        <textarea id="about-task" rows="2" placeholder="About task..."></textarea>
+                    
+                        <label for="start-date">Start date</label>
+                        <div class="start-dd-box date-box">
+                            <input type="date" id="start-dd">
                         </div>
-
-                        <div id="sub-task-body">
-
+                    
+                        <label for="end-date">End date</label>
+                        <div class="end-dd-box date-box">
+                            <input type="date" id="end-dd">
                         </div>
-                    </div>
-                </form>
+                    
+                        <div class="sub-task-box">
+                            <div class="sub-task-heading">
+                                <label for="sub-tasks">Sub-tasks</label>
+                                <button type="button" id="add-sub-task">
+                                    <i class="uil uil-plus"></i>
+                                </button>
+                            </div>
+                    
+                            <div id="sub-task-body"></div>
+                        </div>
+                        <button type="submit" id="submit-btn">Submit</button>
+                    </form>
             </div>
         </section>
     </main>

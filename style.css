@@ -219,7 +219,21 @@ article .dashboard {
     box-shadow: 2px 2px 4px var(--bx-shadow);
     height: 45em;
     background-color: var(--sec-clr);
+    display: grid;
+    place-items: start;
+    padding: 1em;
+    font-family: var(--ff);
+    font-size: 2rem;
 }
+
+/* #Dashboard {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: 2px 2px 8px var(--bx-shadow);
+    padding: 1em;
+    margin-top: 20px;
+} */
 
 /* Article two */
 article:nth-child(2) :is(.stats) {
@@ -249,7 +263,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border: 1px dashed var(--bg-drop);
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
-    height: 40em;
+    height: fit-content;
     position: absolute;
     top: 10%;
     left: 15%;
@@ -299,6 +313,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 1em auto;
     gap: 1em;
     padding: 0.5em;
@@ -322,48 +337,47 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: var(--close-btn);
 }
 
+
 #task-creation {
-    width: 100%;
-    /* border: 1px dashed red; */
+    width: 80%;
     height: fit-content;
     display: flex;
     justify-content: center;
     gap: 1em;
-    align-items: left;
+    align-items: flex-start;
     flex-direction: column;
     padding: 1em;
-
+    background-color: #fff;
+    /* White background */
+    border-radius: 1em;
+    margin-bottom: 20px;
 }
 
-#task-name {
+#task-name,
+#about-task {
     width: 100%;
-    max-width: 40%;
     height: 3em;
     border: 1px solid var(--sec-clr);
     box-shadow: 2px 2px 4px var(--bx-shadow);
     padding-left: 1em;
-    font-family: var(--ff);
     font-size: 1rem;
     border-radius: 1.5em;
     caret-color: var(--tet-clr);
+    background-color: white;
+    color: var(--tet-clr);
+    font-family: var(--ff);
 }
 
 #about-task {
-    width: 100%;
-    max-width: 60%;
     resize: vertical;
     padding: 1em 0 0 1em;
-    font-family: var(--ff);
-    font-size: 1rem;
-    border-radius: 1.5em;
-    border: 1px solid var(--sec-clr);
-    box-shadow: 2px 2px 4px var(--bx-shadow);
-    caret-color: var(--tet-clr);
+    height: auto;
 }
 
 :where(#task-name, #about-task):focus {
     border: 1px solid transparent;
     outline: none;
+    box-shadow: 0 0 5px var(--sec-clr);
 }
 
 #task-creation label {
@@ -373,12 +387,12 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     color: var(--tet-clr);
 }
 
-#task-creation :is(.start-dd-box, .end-dd-box){
+#task-creation :is(.start-dd-box, .end-dd-box) {
     width: 100%;
-    max-width: 20%;
     border: 1px solid var(--sec-clr);
     height: 3em;
     background-color: var(--sec-clr);
+    /* Light Green */
     border-radius: 1em;
     box-shadow: 2px 2px 4px var(--bx-shadow);
     display: grid;
@@ -392,17 +406,18 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border-radius: 1em;
     border: 1px solid var(--sec-clr);
     padding: 0.5em;
+    background-color: white;
+    color: var(--tet-clr);
 }
 
 .date-box :is(#start-dd, #end-dd):focus {
     border: 1px solid transparent;
     outline: none;
+    box-shadow: 0 0 5px var(--sec-clr);
 }
 
 #task-creation .sub-task-box {
     width: 100%;
-    max-width: 50%;
-    /* border: 1px solid red; */
     height: fit-content;
     display: grid;
     place-content: left;
@@ -412,13 +427,12 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 
 .sub-task-box :is(.sub-task-heading, #sub-task-body) {
     width: 100%;
-    /* border: 1px dashed red; */
     height: fit-content;
 }
 
 .sub-task-heading label {
     text-transform: capitalize;
-    font-size: 0.5rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--tet-clr);
 }
@@ -429,11 +443,74 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border-radius: 50%;
     border: none;
     background-color: var(--pry-clr);
-    color: var(--sec-clr);
+    color: white;
     font-size: 1.1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.sub-task-input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.sub-task-input {
+    width: 100%;
+    height: 2.5em;
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    padding: 0.5em;
+    font-family: var(--ff);
+    font-size: 1rem;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    background-color: white;
+    color: var(--tet-clr);
+}
+
+.delete-sub-task {
+    width: 2em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: #f44336;
+    /* Red */
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#task-creation #submit-btn {
+    width: 100%;
+    max-width: 10em;
+    height: 2em;
+    border-radius: 1em;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--pry-clr);
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+}
+
+.task-card {
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #E8F5E9;
+}
+
+.task-card h3,
+.task-card p,
+.task-card span {
+    margin: 0.5em 0;
+}
 
 @media screen and (max-width: 768px) {
     .nav-container {
