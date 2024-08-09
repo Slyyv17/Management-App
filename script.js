@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const deleteButton = document.createElement("button");
       deleteButton.className = "delete-sub-task";
-      deleteButton.innerHTML = "&times;";
+      deleteButton.innerHTML = `<i class="uil uil-trash-alt"></i>`;
       deleteButton.addEventListener("click", function () {
         subTaskBody.removeChild(subTaskContainer);
       });
@@ -67,6 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
       subTaskContainer.appendChild(subTaskInput);
       subTaskContainer.appendChild(deleteButton);
       subTaskBody.appendChild(subTaskContainer);
+    });
+
+  // adding Tags
+  document
+    .getElementById("status-select").addEventListener("change", function() {
+      const selectedStatus = this.value;
+      console.log(`Selected value: ${selectedStatus}`);
     });
 
   // Form submission
@@ -100,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskDescription = document.createElement("p");
       taskDescription.textContent = taskDesc;
 
-      const taskStartDate = document.createElement("span");
-      taskStartDate.textContent = "Start Date: " + startDate;
+      const taskStartDate = document.createElement("span"); 
+      taskStartDate.textContent = "Start Date: " + startDate "<br />";
 
       const taskEndDate = document.createElement("span");
       taskEndDate.textContent = "End Date: " + endDate;

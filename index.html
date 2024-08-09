@@ -25,6 +25,13 @@
                     <i class="uil uil-search"></i> <span>search</span>
                 </a>
             </li>
+
+            <li>
+                <a href="#">
+                    <i class="uil uil-heart-rate"></i> <span>activities</span>
+                </a>
+            </li>
+            
             <li>
                 <a href="#" id="task-link">
                     <i class="uil uil-list-ul"></i> <span>tasks</span>
@@ -59,6 +66,11 @@
             <li>
                 <a href="#">
                     <i class="uil uil-search"></i> <span>search</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="uil uil-heart-rate"></i> <span>activities</span>
                 </a>
             </li>
             <li>
@@ -156,6 +168,14 @@
                             </div>
                     
                             <div id="sub-task-body"></div>
+                            <div class="project-status">
+                                <label for="status-select"> Status </label>
+                                <select id="status-select">
+                                    <option value="completed"> Completed </option>
+                                    <option value="in-progress"> In Progress </option>
+                                    <option value="on-hold"> On Hold </option>
+                                </select>
+                            </div>
                         </div>
                         <button type="submit" id="submit-btn">Submit</button>
                     </form>

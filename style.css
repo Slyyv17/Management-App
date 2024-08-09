@@ -16,6 +16,7 @@
     --ff: 'Satoshi', sans-serif;
     --bx-shadow: rgb(0, 0, 0, 0.1);
     --close-btn: rgb(255, 0, 0);
+    --delete-btn: rgb(244, 67, 54);
 }
 
 body {
@@ -219,10 +220,12 @@ article .dashboard {
     box-shadow: 2px 2px 4px var(--bx-shadow);
     height: 45em;
     background-color: var(--sec-clr);
-    display: grid;
-    place-items: start;
+    display: flex;
+    justify-content: start;
+    align-items: start;
     padding: 1em;
     font-family: var(--ff);
+    flex-direction: column;
 }
 
 /* #Dashboard {
@@ -467,14 +470,15 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     box-shadow: 2px 2px 4px var(--bx-shadow);
     background-color: white;
     color: var(--tet-clr);
+    margin-bottom: 1em;
 }
 
 .delete-sub-task {
-    width: 2em;
+    width: 1.5em;
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: none;
-    background-color: #f44336;
+    background-color: var(--delete-btn);
     /* Red */
     color: white;
     font-size: 1.1rem;
@@ -482,12 +486,13 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1em;
 }
 
 #task-creation #submit-btn {
     width: 100%;
     max-width: 10em;
-    height: 2em;
+    height: 2.5em;
     border-radius: 1em;
     font-size: 1.2rem;
     color: white;
@@ -509,6 +514,38 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 .task-card p,
 .task-card span {
     margin: 0.5em 0;
+}
+
+/* status */
+.project-status {
+    margin: 20px 0;
+  }
+
+.project-status label {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+#status-select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--sec-clr);
+    outline: none;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+}
+
+#status-select option {
+    border: 0;
+    color: var(--main-clr);
+    transition: background-color 600ms,
+        color 600ms;
+}
+
+#status-select option:hover {
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
