@@ -17,6 +17,9 @@
     --bx-shadow: rgb(0, 0, 0, 0.1);
     --close-btn: rgb(255, 0, 0);
     --delete-btn: rgb(244, 67, 54);
+    --complete-clr: rgb(40, 167, 69);
+    --in-progress-clr: rgb(255, 193, 8);
+    --on-hold-clr: rgb(220, 53, 69);
 }
 
 body {
@@ -228,14 +231,6 @@ article .dashboard {
     flex-direction: column;
 }
 
-/* #Dashboard {
-    width: 80%;
-    background-color: #fff;
-    border-radius: 1em;
-    box-shadow: 2px 2px 8px var(--bx-shadow);
-    padding: 1em;
-    margin-top: 20px;
-} */
 
 /* Article two */
 article:nth-child(2) :is(.stats) {
@@ -270,8 +265,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     top: 10%;
     left: 15%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: none;
-    transition: all 0.3s ease;
     padding: 20px;
     z-index: 101;
     display: grid;
@@ -281,10 +274,9 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 #Task-box .close-box {
     width: 100%;
     display: flex;
-    justify-content: flex-end; /* Align the button to the right */
+    justify-content: flex-end;
     align-items: center;
-    border: var(--bx-shadow); /* Remove the border if not needed */
-    margin-bottom: 10px; /* Add some margin if needed */
+    margin-bottom: 10px;
 }
 
 #Task-box .close-box button {
@@ -304,13 +296,11 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 
 .task-space {
     width: 100%;
-    /* border: 1px dashed black; */
     height: fit-content;
 }
 
 .task-space .create-space {
     width: 100%;
-    /* border: 1px dashed red; */
     height: fit-content;
     display: flex;
     justify-content: center;
@@ -339,7 +329,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: var(--close-btn);
 }
 
-
 #task-creation {
     width: 80%;
     height: fit-content;
@@ -350,7 +339,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     flex-direction: column;
     padding: 1em;
     background-color: #fff;
-    /* White background */
     border-radius: 1em;
     margin-bottom: 20px;
 }
@@ -394,7 +382,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border: 1px solid var(--sec-clr);
     height: 3em;
     background-color: var(--sec-clr);
-    /* Light Green */
     border-radius: 1em;
     box-shadow: 2px 2px 4px var(--bx-shadow);
     display: grid;
@@ -479,7 +466,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border-radius: 50%;
     border: none;
     background-color: var(--delete-btn);
-    /* Red */
     color: white;
     font-size: 1.1rem;
     cursor: pointer;
@@ -516,10 +502,23 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     margin: 0.5em 0;
 }
 
+/* New styles for the ul and li elements */
+.task-card ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.task-card ul li {
+    margin-bottom: 5px;
+    list-style-type: disc;
+    font-size: 0.9rem;
+    color: var(--tet-clr);
+}
+
 /* status */
 .project-status {
     margin: 20px 0;
-  }
+}
 
 .project-status label {
     font-size: 1rem;
@@ -528,7 +527,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 
 #status-select {
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 5px;
     border: 1px solid var(--sec-clr);
     outline: none;
@@ -538,14 +537,34 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 #status-select option {
     border: 0;
     color: var(--main-clr);
-    transition: background-color 600ms,
-        color 600ms;
+    transition: background-color 600ms, color 600ms;
 }
 
 #status-select option:hover {
     background-color: var(--pry-clr);
     color: var(--sec-clr);
     cursor: pointer;
+}
+
+.tag {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--sec-clr);
+    display: inline-block;
+    margin: 5px;
+}
+
+.completed {
+    background-color: var(--complete-clr);
+}
+
+.in-progress {
+    background-color: var(--in-progress-clr);
+}
+
+.on-hold {
+    background-color: var(--on-hold-clr);
 }
 
 @media screen and (max-width: 768px) {

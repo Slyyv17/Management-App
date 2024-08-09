@@ -65,11 +65,6 @@
         <ul>
             <li>
                 <a href="#">
-                    <i class="uil uil-search"></i> <span>search</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
                     <i class="uil uil-heart-rate"></i> <span>activities</span>
                 </a>
             </li>
@@ -101,8 +96,7 @@
         <section>
             <article>
                 <div class="title-article">
-                    <div class="username"> Hello, </div>
-
+                    <div class="username">Hello,</div>
                     <div class="search-box">
                         <input type="search" id="search-bar" placeholder="Search tasks, projects and notes...">
                         <button>
@@ -110,12 +104,15 @@
                         </button>
                     </div>
                 </div>
-
+        
                 <div class="dashboard" id="Dashboard">
-                    <h3> Tasks, Projects, and Notes... </h3>
+                    <h3>Tasks, Projects, and Notes...</h3>
+                    <!-- <div class="dashboard-tags">
+                        <span id="selected-tag" class="tag">Select a status</span>
+                    </div> -->
                 </div>
             </article>
-
+        
             <!-- Side article -->
             <article>
                 <div class="stats"></div>
@@ -127,38 +124,38 @@
                 <div class="on-hold-proj"></div>
             </article>
         </section>
-
+        
         <section style="display: none;" id="Task-box">
             <div class="close-box">
                 <button id="close-btn">
                     <i class="uil uil-times"></i>
                 </button>
             </div>
-
+        
             <div class="task-space">
                 <div class="create-space">
-                    <h2> Create A New Task </h2>
+                    <h2>Create A New Task</h2>
                     <button id="task-btn">
                         <i class="uil uil-plus"></i>
                     </button>
                     <button id="close-tsk-ctn" style="display: none;">
                         <i class="uil uil-times"></i>
                     </button>
-                    
+        
                     <form id="task-creation">
                         <input type="text" id="task-name" placeholder="Task name..." />
                         <textarea id="about-task" rows="2" placeholder="About task..."></textarea>
-                    
+        
                         <label for="start-date">Start date</label>
                         <div class="start-dd-box date-box">
                             <input type="date" id="start-dd">
                         </div>
-                    
+        
                         <label for="end-date">End date</label>
                         <div class="end-dd-box date-box">
                             <input type="date" id="end-dd">
                         </div>
-                    
+        
                         <div class="sub-task-box">
                             <div class="sub-task-heading">
                                 <label for="sub-tasks">Sub-tasks</label>
@@ -166,19 +163,20 @@
                                     <i class="uil uil-plus"></i>
                                 </button>
                             </div>
-                    
+        
                             <div id="sub-task-body"></div>
                             <div class="project-status">
-                                <label for="status-select"> Status </label>
+                                <label for="status-select">Status</label>
                                 <select id="status-select">
-                                    <option value="completed"> Completed </option>
-                                    <option value="in-progress"> In Progress </option>
-                                    <option value="on-hold"> On Hold </option>
+                                    <option value="completed">Completed</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="on-hold">On Hold</option>
                                 </select>
                             </div>
                         </div>
                         <button type="submit" id="submit-btn">Submit</button>
                     </form>
+                </div>
             </div>
         </section>
     </main>

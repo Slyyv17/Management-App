@@ -70,11 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // adding Tags
-  document
-    .getElementById("status-select").addEventListener("change", function() {
-      const selectedStatus = this.value;
-      console.log(`Selected value: ${selectedStatus}`);
-    });
+  const statusSelect = document.getElementById("status-select");
+  const selectedTag = document.getElementById("selected-tag");
+
+  statusSelect.addEventListener("change", function () {
+    selectedTag.className = "tag"; // Reset classes
+    selectedTag.classList.add(this.value); // Add new status class
+    selectedTag.textContent = this.options[this.selectedIndex].text; // Update text
+  });
 
   // Form submission
   document
@@ -86,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskDesc = document.getElementById("about-task").value;
       const startDate = document.getElementById("start-dd").value;
       const endDate = document.getElementById("end-dd").value;
+      const status = statusSelect.options[statusSelect.selectedIndex].text;
+      const statusClass = statusSelect.value;
 
       if (
         taskName === "" ||
@@ -107,16 +112,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskDescription = document.createElement("p");
       taskDescription.textContent = taskDesc;
 
-      const taskStartDate = document.createElement("span"); 
-      taskStartDate.textContent = "Start Date: " + startDate "<br />";
+      const taskStartDate = document.createElement("span");
+      taskStartDate.textContent = "Start Date: " + startDate + " ";
 
       const taskEndDate = document.createElement("span");
-      taskEndDate.textContent = "End Date: " + endDate;
+      taskEndDate.textContent = "End Date: " + endDate + " ";
+
+      const taskStatus = document.createElement("span");
+      taskStatus.className = `tag ${statusClass}`;
+      taskStatus.textContent = status;
 
       taskCard.appendChild(taskTitle);
       taskCard.appendChild(taskDescription);
       taskCard.appendChild(taskStartDate);
       taskCard.appendChild(taskEndDate);
+      taskCard.appendChild(taskStatus);
 
       const subTasks = document.getElementById("sub-task-body").children;
       if (subTasks.length > 0) {
