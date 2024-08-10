@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeTskCtn = document.getElementById("close-tsk-ctn");
   const taskCreation = document.getElementById("task-creation");
   const dashboard = document.getElementById("Dashboard");
+  const activityBox = document.getElementById("activity-box");
+  
 
   taskBtn.addEventListener("click", function () {
     taskCreation.style.display = "flex";
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         taskCard.appendChild(subTaskList);
       }
 
-      dashboard.appendChild(taskCard);
+      activityBox.appendChild(taskCard);
 
       // Reset form and hide it
       taskCreation.reset();
@@ -148,4 +150,19 @@ document.addEventListener("DOMContentLoaded", function () {
       taskBtn.style.display = "block";
       closeTskCtn.style.display = "none";
     });
+});
+
+// activity tab
+document.addEventListener("DOMContentLoaded", function() {
+  const atyLink = document.getElementById("aty-link");
+  const atyCloseBtn = document.getElementById("activity-close-btn");
+  const activityTab = document.getElementById("activity-tab");
+
+  atyLink.addEventListener("click", function() {
+    activityTab.style.display = "block";
+  });
+
+  activityTab.addEventListener("click", function() {
+    activityTab.style.display = "none";
+  });
 });

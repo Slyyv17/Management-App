@@ -221,7 +221,7 @@ article .dashboard {
     border: 1px solid var(--sec-clr);
     border-radius: 1em;
     box-shadow: 2px 2px 4px var(--bx-shadow);
-    height: 45em;
+    height: fit-content;
     background-color: var(--sec-clr);
     display: flex;
     justify-content: start;
@@ -254,7 +254,8 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 }
 
 /* For task */
-#Task-box {
+#Task-box,
+#activity-tab {
     width: 100%;
     max-width: 70%;
     border: 1px dashed var(--bg-drop);
@@ -265,7 +266,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     top: 10%;
     left: 15%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    padding: 10px;
     z-index: 101;
     display: grid;
     place-items: center;
@@ -341,6 +342,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: #fff;
     border-radius: 1em;
     margin-bottom: 20px;
+    overflow-y: visible;
 }
 
 #task-name,
@@ -417,6 +419,27 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 .sub-task-box :is(.sub-task-heading, #sub-task-body) {
     width: 100%;
     height: fit-content;
+}
+
+.sub-task-box {
+    max-height: 200px; /* Set a max height for the sub-task section */
+    overflow-y: auto; /* Make the sub-task section scrollable if it overflows */
+}
+
+/* Scrollbar styling */
+.sub-task-box::-webkit-scrollbar-track {
+    background-color: var(--sec-clr);
+    border-radius: 10px;
+}
+
+.sub-task-box::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+.sub-task-box::-webkit-scrollbar-thumb {
+    background-color: var(--bx-shadow);
+    border-radius: 10px;
 }
 
 .sub-task-heading label {
@@ -567,6 +590,51 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: var(--on-hold-clr);
 }
 
+/* activity tab */
+#activity-tab .close-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#activity-tab .close-box button {
+    width: 2em;
+    height: 1.5em;
+    background: var(--close-btn);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--sec-clr);
+    transition: color 0.3s ease;
+}
+
+#activity-tab .close-box button:hover {
+    color: var(--sec-clr);
+}
+
+#activity-box {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 1em;
+    margin-bottom: 20px;
+    overflow-y: visible;
+}
+
+#activity-box h3 {
+    font-family: var(--ff);
+    font-size: 1.5rem;
+}
+
+/* mobile responsiveness */
 @media screen and (max-width: 768px) {
     .nav-container {
         display: none;
