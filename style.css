@@ -520,6 +520,19 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: #E8F5E9;
 }
 
+.task-card p {
+    font-family: var(--ff);
+    font-size: 1rem;
+    color: var(--tet-clr);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Number of lines to display */
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    line-height: 1.5; /* Adjust line height as needed */
+}
+
 .task-card h3,
 .task-card p,
 .task-card span {
