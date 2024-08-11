@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="project-link">
                     <i class="uil uil-rocket"></i> <span>projects</span>
                 </a>
             </li>
@@ -191,6 +191,41 @@
 
             <div id="activity-box">
                 <h3>Tasks, Projects, and Notes...</h3>
+            </div>
+        </section>
+
+        <section id="project-tab" style="display: none;">
+            <div class="close-box">
+                <button id="project-close-btn">
+                    <i class="uil uil-times"></i>
+                </button>
+            </div>
+
+            <div class="project-space">
+                <div class="create-space">
+                    <h2>Create A New Project</h2>
+                    <button id="project-btn">
+                        <i class="uil uil-plus"></i>
+                    </button>
+                    <button id="close-prj-ctn" style="display: none;">
+                        <i class="uil uil-times"></i>
+                    </button>
+
+                    <form id="project-creation">
+                        <input type="text" id="project-name" placeholder="Project name..." />
+                        <textarea id="about-project" rows="2" placeholder="About project..."></textarea>
+
+                        <label for="start-date">Start date</label>
+                        <div class="start-dd-box date-box">
+                            <input type="date" id="start-dd">
+                        </div>
+
+                        <label for="end-date">End date</label>
+                        <div class="end-dd-box date-box">
+                            <input type="date" id="end-dd">
+                        </div>
+                    </form>
+                </div>    
             </div>
         </section>
     </main>

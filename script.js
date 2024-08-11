@@ -162,7 +162,57 @@ document.addEventListener("DOMContentLoaded", function() {
     activityTab.style.display = "block";
   });
 
-  activityTab.addEventListener("click", function() {
+  atyCloseBtn.addEventListener("click", function() {
     activityTab.style.display = "none";
   });
+});
+
+// project tab
+document.addEventListener("DOMContentLoaded", function() {
+  const projectLink = document.getElementById("project-link");
+  const projectCloseBtn = document.getElementById("project-close-btn");
+  const projectTab = document.getElementById("project-tab");
+
+  projectLink.addEventListener("click", function() {
+    projectTab.style.display = "block";
+  });
+
+  projectCloseBtn.addEventListener("click", function() {
+    projectTab.style.display = "none";
+  });
+})
+
+// project creation
+document.addEventListener("DOMContentLoaded", function () {
+  const ProjBtn = document.getElementById("project-btn");
+  const closeProjCtn = document.getElementById("close-prj-ctn");
+  const projCreation = document.getElementById("project-creation");
+  const dashboard = document.getElementById("Dashboard");
+  const activityBox = document.getElementById("activity-box");
+  
+
+  ProjBtn.addEventListener("click", function () {
+    projCreation.style.display = "flex";
+    ProjBtn.style.display = "none";
+    closeProjCtn.style.display = "block";
+  });
+
+  closeProjCtn.addEventListener("click", function () {
+    projCreation.style.display = "none";
+    ProjBtn.style.display = "block";
+    closeProjCtn.style.display = "none";
+  });
+
+  // Date validation
+  const startDateInput = document.getElementById("start-dd");
+  const endDateInput = document.getElementById("end-dd");
+
+  const today = new Date().toISOString().split("T")[0];
+  startDateInput.setAttribute("min", today);
+  endDateInput.setAttribute("min", today);
+
+  startDateInput.addEventListener("change", function () {
+  endDateInput.setAttribute("min", this.value);
+  });
+
 });

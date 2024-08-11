@@ -255,7 +255,8 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 
 /* For task */
 #Task-box,
-#activity-tab {
+#activity-tab,
+#project-tab {
     width: 100%;
     max-width: 70%;
     border: 1px dashed var(--bg-drop);
@@ -632,6 +633,141 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 #activity-box h3 {
     font-family: var(--ff);
     font-size: 1.5rem;
+}
+
+#project-tab .close-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#project-tab .close-box button {
+    width: 2em;
+    height: 1.5em;
+    background: var(--close-btn);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--sec-clr);
+    transition: color 0.3s ease;
+}
+
+#project-tab .close-box button:hover {
+    color: var(--sec-clr);
+}
+
+.project-space {
+    width: 100%;
+    height: fit-content;
+}
+
+.project-space .create-space {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em auto;
+    gap: 1em;
+    padding: 0.5em;
+}
+
+.create-space button {
+    width: 3em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    color: var(--sec-clr);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.create-space #project-btn {
+    background-color: var(--pry-clr);
+}
+
+.create-space #close-prj-ctn {
+    background-color: var(--close-btn);
+}
+
+#project-creation {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 1em;
+    margin-bottom: 20px;
+    overflow-y: visible;
+}
+
+#project-name,
+#about-project {
+    width: 100%;
+    height: 3em;
+    border: 1px solid var(--sec-clr);
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    padding-left: 1em;
+    font-size: 1rem;
+    border-radius: 1.5em;
+    caret-color: var(--tet-clr);
+    background-color: white;
+    color: var(--tet-clr);
+    font-family: var(--ff);
+}
+
+#about-project {
+    resize: vertical;
+    padding: 1em 0 0 1em;
+    height: auto;
+}
+
+:where(#project-name, #about-project):focus {
+    border: 1px solid transparent;
+    outline: none;
+    box-shadow: 0 0 5px var(--sec-clr);
+}
+
+#project-creation label {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--tet-clr);
+}
+
+#project-creation :is(.start-dd-box, .end-dd-box) {
+    width: 100%;
+    border: 1px solid var(--sec-clr);
+    height: 3em;
+    background-color: var(--sec-clr);
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    display: grid;
+    place-items: center;
+}
+
+.date-box :is(#start-dd, #end-dd) {
+    width: 100%;
+    font-size: 1rem;
+    height: 2.5em;
+    border-radius: 1em;
+    border: 1px solid var(--sec-clr);
+    padding: 0.5em;
+    background-color: white;
+    color: var(--tet-clr);
+}
+
+.date-box :is(#start-dd, #end-dd):focus {
+    border: 1px solid transparent;
+    outline: none;
+    box-shadow: 0 0 5px var(--sec-clr);
 }
 
 /* mobile responsiveness */
