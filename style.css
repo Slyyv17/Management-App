@@ -552,7 +552,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     color: var(--tet-clr);
 }
 
-/* status */
+/* status for both tasks and projects */
 .project-status {
     margin: 20px 0;
 }
@@ -781,6 +781,164 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border: 1px solid transparent;
     outline: none;
     box-shadow: 0 0 5px var(--sec-clr);
+}
+
+/* sub-project */
+#project-creation .sub-proj-box {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    place-content: left;
+    gap: 1em;
+    padding-top: 0.1em;
+}
+
+.sub-proj-box :is(.sub-proj-heading, #sub-proj-body) {
+    width: 100%;
+    height: fit-content;
+}
+
+.sub-proj-box {
+    max-height: 200px; /* Set a max height for the sub-proj section */
+    overflow-y: auto; /* Make the sub-proj section scrollable if it overflows */
+}
+
+/* Scrollbar styling */
+.sub-proj-box::-webkit-scrollbar-track {
+    background-color: var(--sec-clr);
+    border-radius: 10px;
+}
+
+.sub-proj-box::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+.sub-proj-box::-webkit-scrollbar-thumb {
+    background-color: var(--bx-shadow);
+    border-radius: 10px;
+}
+
+.sub-proj-heading label {
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--tet-clr);
+}
+
+.sub-proj-heading button {
+    width: 2em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--pry-clr);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#project-creation #submit-btn {
+    width: 100%;
+    max-width: 10em;
+    height: 2.5em;
+    border-radius: 1em;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--pry-clr);
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+}
+
+.sub-proj-input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.sub-proj-input {
+    width: 100%;
+    height: 2.5em;
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    padding: 0.5em;
+    font-family: var(--ff);
+    font-size: 1rem;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+    background-color: white;
+    color: var(--tet-clr);
+    margin-bottom: 1em;
+}
+
+.delete-sub-proj {
+    width: 1.5em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--delete-btn);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+#project-creation #submit-btn {
+    width: 100%;
+    max-width: 10em;
+    height: 2.5em;
+    border-radius: 1em;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--pry-clr);
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 4px var(--bx-shadow);
+}
+
+.proj-card {
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #E8F5E9;
+}
+
+.proj-card p {
+    font-family: var(--ff);
+    font-size: 1rem;
+    color: var(--tet-clr);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Number of lines to display */
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    line-height: 1.5; /* Adjust line height as needed */
+}
+
+.proj-card h3,
+.proj-card p,
+.proj-card span {
+    margin: 0.5em 0;
+}
+
+/* New styles for the ul and li elements */
+.proj-card ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.proj-card ul li {
+    margin-bottom: 5px;
+    list-style-type: disc;
+    font-size: 0.9rem;
+    color: var(--tet-clr);
 }
 
 /* mobile responsiveness */

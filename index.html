@@ -10,7 +10,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="shortcut icon" href="assets/img/TASK AURA.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/Task Aura filled logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -194,6 +194,7 @@
             </div>
         </section>
 
+        <!-- Project tab -->
         <section id="project-tab" style="display: none;">
             <div class="close-box">
                 <button id="project-close-btn">
@@ -224,6 +225,26 @@
                         <div class="end-dd-box date-box">
                             <input type="date" id="end-dd">
                         </div>
+
+                        <div class="sub-proj-box">
+                            <div class="sub-proj-heading">
+                                <label for="sub-proj">Sub-tasks</label>
+                                <button type="button" id="add-sub-proj">
+                                    <i class="uil uil-plus"></i>
+                                </button>
+                            </div>
+        
+                            <div id="sub-proj-body"></div>
+                            <div class="project-status">
+                                <label for="status-select">Status</label>
+                                <select id="status-select">
+                                    <option value="completed">Completed</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="on-hold">On Hold</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit-btn">Submit</button>
                     </form>
                 </div>    
             </div>
