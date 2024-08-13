@@ -443,6 +443,14 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     border-radius: 10px;
 }
 
+.sub-task-heading {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .sub-task-heading label {
     text-transform: capitalize;
     font-size: 1rem;
@@ -450,7 +458,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     color: var(--tet-clr);
 }
 
-.sub-task-heading button {
+.sub-task-heading #add-sub-task {
     width: 2em;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -563,16 +571,19 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 }
 
 #status-select {
+    width: 20%;
     padding: 5px 10px;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid var(--sec-clr);
     outline: none;
     box-shadow: 2px 2px 4px var(--bx-shadow);
+    border-radius: 1.5em;
 }
 
 #status-select option {
-    border: 0;
+    border: none;
+    outline: 0;
     color: var(--main-clr);
     transition: background-color 600ms, color 600ms;
 }
