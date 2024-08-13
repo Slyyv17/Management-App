@@ -671,21 +671,21 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     margin-top: 1em;
 }
 
-#activity-tab :is(#Task-output, #Project-output, #Note-output) {
+#activity-box :is(#Task-output, #Project-output, #Note-output) {
     width: 100%;
     margin-bottom: 1em;
 }
 
-#activity-tab::-webkit-scrollbar-track {
+#activity-box::-webkit-scrollbar-track {
     background-color: var(--sec-clr);
     border-radius: 10px;
 }
 
-#activity-tab::-webkit-scrollbar {
+#activity-box::-webkit-scrollbar {
     width: 10px;
 }
 
-#activity-tab::-webkit-scrollbar-thumb {
+#activity-box::-webkit-scrollbar-thumb {
     background-color: var(--bx-shadow);
     border-radius: 10px;
 }

@@ -286,10 +286,10 @@ document.addEventListener("DOMContentLoaded", function () {
       projDescription.textContent = projDesc;
 
       const projStartDate = document.createElement("span");
-      projStartDate.textContent = "Start Date: " + startDate;
+      projStartDate.textContent = "Start Date: " + startDate + " ";
 
       const projEndDate = document.createElement("span");
-      projEndDate.textContent = "End Date: " + endDate;
+      projEndDate.textContent = "End Date: " + endDate + " ";
 
       const projStatus = document.createElement("span");
       projStatus.className = `tag ${statusClass}`;
