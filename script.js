@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const taskCreation = document.getElementById("task-creation");
   const dashboard = document.getElementById("Dashboard");
   const activityBox = document.getElementById("activity-box");
+  const taskResult = document.getElementById("Task-output");
   
 
   taskBtn.addEventListener("click", function () {
@@ -142,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         taskCard.appendChild(subTaskList);
       }
 
-      activityBox.appendChild(taskCard);
+      taskResult.appendChild(taskCard);
 
       // Reset form and hide it
       taskCreation.reset();
@@ -186,33 +187,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const projBtn = document.getElementById("project-btn");
   const closeProjCtn = document.getElementById("close-prj-ctn");
   const projCreation = document.getElementById("project-creation");
-  const activityBox = document.getElementById("activity-box");
+  const projResult = document.getElementById("Project-output");
 
   projBtn.addEventListener("click", function () {
-      projCreation.style.display = "block";
-      projBtn.style.display = "none";
-      closeProjCtn.style.display = "block";
+    projCreation.style.display = "block";
+    projBtn.style.display = "none";
+    closeProjCtn.style.display = "block";
   });
 
   closeProjCtn.addEventListener("click", function () {
-      projCreation.style.display = "none";
-      projBtn.style.display = "block";
-      closeProjCtn.style.display = "none";
+    projCreation.style.display = "none";
+    projBtn.style.display = "block";
+    closeProjCtn.style.display = "none";
   });
 
   // Date validation
-  const startDateInput = document.getElementById("start-dd");
-  const endDateInput = document.getElementById("end-dd");
+  const projStartDateInput = document.getElementById("proj-start-dd");
+  const projEndDateInput = document.getElementById("proj-end-dd");
 
   const today = new Date().toISOString().split("T")[0];
-  startDateInput.setAttribute("min", today);
-  endDateInput.setAttribute("min", today);
+  projStartDateInput.setAttribute("min", today);
+  projEndDateInput.setAttribute("min", today);
 
-  startDateInput.addEventListener("change", function () {
-      endDateInput.setAttribute("min", this.value);
+  projStartDateInput.addEventListener("change", function () {
+    projEndDateInput.setAttribute("min", this.value);
   });
 
-  // Add sub-task functionality
+  projEndDateInput.addEventListener("change", function () {
+    if (this.value < projStartDateInput.value) {
+      alert("End date cannot be before start date.");
+      this.value = "";
+    }
+  });
+
+  // Add sub-project functionality
   document
     .getElementById("add-sub-proj")
     .addEventListener("click", function () {
@@ -238,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
       subProjBody.appendChild(subProjContainer);
     });
 
-  // adding Tags
+  // Adding Tags
   const statusSelect = document.getElementById("status-select");
   const selectedTag = document.getElementById("selected-tag");
 
@@ -248,22 +256,23 @@ document.addEventListener("DOMContentLoaded", function () {
     selectedTag.textContent = this.options[this.selectedIndex].text; // Update text
   });
 
-
   // Form submission
-  document.getElementById("project-creation").addEventListener("submit", function (event) {
+  document
+    .getElementById("project-creation")
+    .addEventListener("submit", function (event) {
       event.preventDefault();
 
       const projName = document.getElementById("project-name").value;
       const projDesc = document.getElementById("about-project").value;
-      const startDate = document.getElementById("start-dd").value;
-      const endDate = document.getElementById("end-dd").value;
+      const startDate = document.getElementById("proj-start-dd").value;
+      const endDate = document.getElementById("proj-end-dd").value;
       const statusSelect = document.getElementById("status-select");
       const status = statusSelect.options[statusSelect.selectedIndex].text;
       const statusClass = statusSelect.value;
 
       if (!projName || !projDesc || !startDate || !endDate) {
-          alert("Please fill in all fields.");
-          return;
+        alert("Please fill in all fields.");
+        return;
       }
 
       // Create project card
@@ -294,25 +303,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const subProjects = document.getElementById("sub-proj-body").children;
       if (subProjects.length > 0) {
-          const subProjList = document.createElement("ul");
-          for (let subProject of subProjects) {
-              const subProjInput = subProject.querySelector(".sub-proj-input");
-              const subProjItem = document.createElement("li");
-              subProjItem.textContent = subProjInput.value;
-              subProjList.appendChild(subProjItem);
+        const subProjList = document.createElement("ul");
+        for (let subProject of subProjects) {
+          const subProjInput = subProject.querySelector(".sub-proj-input");
+          if (subProjInput.value.trim()) {
+            const subProjItem = document.createElement("li");
+            subProjItem.textContent = subProjInput.value;
+            subProjList.appendChild(subProjItem);
           }
-          projCard.appendChild(subProjList);
+        }
+        projCard.appendChild(subProjList);
       }
 
-      activityBox.appendChild(projCard);
+      projResult.appendChild(projCard);
 
       // Reset form and hide it
       projCreation.reset();
       projCreation.style.display = "none";
       projBtn.style.display = "block";
       closeProjCtn.style.display = "none";
-  });
+    });
 });
+
 
 /* when one tab is open and another wants to be opened
 previous tab will be closed (optional)

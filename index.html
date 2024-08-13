@@ -106,9 +106,6 @@
                 </div>
         
                 <div class="dashboard" id="Dashboard">
-                    <!-- <div class="dashboard-tags">
-                        <span id="selected-tag" class="tag">Select a status</span>
-                    </div> -->
                 </div>
             </article>
         
@@ -184,13 +181,21 @@
         <!-- Activity tab -->
         <section id="activity-tab" style="display: none;">
             <div class="close-box">
+                <h1> Activities </h1>
                 <button id="activity-close-btn">
                     <i class="uil uil-times"></i>
                 </button>
             </div>
 
             <div id="activity-box">
-                <h3>Tasks, Projects, and Notes...</h3>
+                <h3><i class="uil uil-list-ul"></i> Tasks...</h3>
+                <div id="Task-output"></div>
+
+                <h3><i class="uil uil-rocket"></i> Projects...</h3>
+                <div id="Project-output"></div>
+
+                <h3><i class="uil uil-notes"></i> Notes...</h3>
+                <div id="Note-output"></div>
             </div>
         </section>
 
@@ -201,7 +206,7 @@
                     <i class="uil uil-times"></i>
                 </button>
             </div>
-
+        
             <div class="project-space">
                 <div class="create-space">
                     <h2>Create A New Project</h2>
@@ -211,24 +216,24 @@
                     <button id="close-prj-ctn" style="display: none;">
                         <i class="uil uil-times"></i>
                     </button>
-
+        
                     <form id="project-creation">
                         <input type="text" id="project-name" placeholder="Project name..." />
                         <textarea id="about-project" rows="2" placeholder="About project..."></textarea>
-
-                        <label for="start-date">Start date</label>
+        
+                        <label for="proj-start-dd">Start date</label>
                         <div class="start-dd-box date-box">
-                            <input type="date" id="start-dd">
+                            <input type="date" id="proj-start-dd">
                         </div>
-
-                        <label for="end-date">End date</label>
+        
+                        <label for="proj-end-dd">End date</label>
                         <div class="end-dd-box date-box">
-                            <input type="date" id="end-dd">
+                            <input type="date" id="proj-end-dd">
                         </div>
-
+        
                         <div class="sub-proj-box">
                             <div class="sub-proj-heading">
-                                <label for="sub-proj">Sub-tasks</label>
+                                <label for="sub-proj">Sub-projects</label>
                                 <button type="button" id="add-sub-proj">
                                     <i class="uil uil-plus"></i>
                                 </button>
@@ -246,9 +251,10 @@
                         </div>
                         <button type="submit" id="submit-btn">Submit</button>
                     </form>
-                </div>    
+                </div>
             </div>
         </section>
+
     </main>
 
     <script src="script.js"></script>

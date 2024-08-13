@@ -264,7 +264,7 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     backdrop-filter: blur(5px);
     height: fit-content;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 15%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
@@ -605,12 +605,24 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 }
 
 /* activity tab */
+#activity-tab {
+    overflow-y: auto;
+    height: 100vh;
+    /* Ensure the tab takes full height of the viewport */
+}
+
 #activity-tab .close-box {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+
+.close-box h1 {
+    font-family: var(--ff);
+    font-size: 1.5rem;
+    margin-left: 1em;
 }
 
 #activity-tab .close-box button {
@@ -629,25 +641,45 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 }
 
 #activity-box {
-    width: 80%;
-    height: fit-content;
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    /* Adjust this based on the height of the header and any padding/margin */
     display: flex;
-    justify-content: center;
-    gap: 1em;
-    align-items: flex-start;
     flex-direction: column;
     padding: 1em;
     background-color: #fff;
     border-radius: 1em;
-    margin-bottom: 20px;
-    overflow-y: visible;
+    margin: 0 auto;
+    overflow-y: auto;
 }
 
 #activity-box h3 {
     font-family: var(--ff);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--tet-clr);
+    margin-top: 1em;
 }
 
+#activity-tab :is(#Task-output, #Project-output, #Note-output) {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+#activity-tab::-webkit-scrollbar-track {
+    background-color: var(--sec-clr);
+    border-radius: 10px;
+}
+
+#activity-tab::-webkit-scrollbar {
+    width: 10px;
+}
+
+#activity-tab::-webkit-scrollbar-thumb {
+    background-color: var(--bx-shadow);
+    border-radius: 10px;
+}
+
+/* project tab */
 #project-tab .close-box {
     width: 100%;
     display: flex;
@@ -724,7 +756,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 #project-name,
 #about-project {
     width: 100%;
-    height: 3em;
     border: 1px solid var(--sec-clr);
     box-shadow: 2px 2px 4px var(--bx-shadow);
     padding-left: 1em;
@@ -734,6 +765,11 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     background-color: white;
     color: var(--tet-clr);
     font-family: var(--ff);
+    margin: 1em 0 0.5em 0;
+}
+
+#project-name {
+    height: 3em;
 }
 
 #about-project {
@@ -753,9 +789,10 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--tet-clr);
+    margin-top: 1em;
 }
 
-#project-creation :is(.start-dd-box, .end-dd-box) {
+.date-box {
     width: 100%;
     border: 1px solid var(--sec-clr);
     height: 3em;
@@ -764,9 +801,10 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     box-shadow: 2px 2px 4px var(--bx-shadow);
     display: grid;
     place-items: center;
+    margin: 0.5em 0 1em 0;
 }
 
-.date-box :is(#start-dd, #end-dd) {
+.date-box input[type="date"] {
     width: 100%;
     font-size: 1rem;
     height: 2.5em;
@@ -777,13 +815,12 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     color: var(--tet-clr);
 }
 
-.date-box :is(#start-dd, #end-dd):focus {
+.date-box input[type="date"]:focus {
     border: 1px solid transparent;
     outline: none;
     box-shadow: 0 0 5px var(--sec-clr);
 }
 
-/* sub-project */
 #project-creation .sub-proj-box {
     width: 100%;
     height: fit-content;
@@ -793,17 +830,11 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     padding-top: 0.1em;
 }
 
-.sub-proj-box :is(.sub-proj-heading, #sub-proj-body) {
-    width: 100%;
-    height: fit-content;
-}
-
 .sub-proj-box {
-    max-height: 200px; /* Set a max height for the sub-proj section */
-    overflow-y: auto; /* Make the sub-proj section scrollable if it overflows */
+    max-height: 200px;
+    overflow-y: auto;
 }
 
-/* Scrollbar styling */
 .sub-proj-box::-webkit-scrollbar-track {
     background-color: var(--sec-clr);
     border-radius: 10px;
@@ -817,6 +848,12 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
 .sub-proj-box::-webkit-scrollbar-thumb {
     background-color: var(--bx-shadow);
     border-radius: 10px;
+}
+
+.sub-proj-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sub-proj-heading label {
@@ -838,19 +875,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#project-creation #submit-btn {
-    width: 100%;
-    max-width: 10em;
-    height: 2.5em;
-    border-radius: 1em;
-    font-size: 1.2rem;
-    color: white;
-    background-color: var(--pry-clr);
-    cursor: pointer;
-    border: none;
-    box-shadow: 2px 2px 4px var(--bx-shadow);
 }
 
 .sub-proj-input-container {
@@ -916,10 +940,10 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Number of lines to display */
+    -webkit-line-clamp: 3;
     line-clamp: 3;
     text-overflow: ellipsis;
-    line-height: 1.5; /* Adjust line height as needed */
+    line-height: 1.5;
 }
 
 .proj-card h3,
@@ -928,7 +952,6 @@ article:nth-child(2) :is(.tot-proj, .tot-task, .overdue-task, .completed-proj, .
     margin: 0.5em 0;
 }
 
-/* New styles for the ul and li elements */
 .proj-card ul {
     margin-top: 10px;
     padding-left: 20px;
