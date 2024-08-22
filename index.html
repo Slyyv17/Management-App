@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Task Aura </title>
+    <title>Task Aura</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -14,103 +14,83 @@
 </head>
 
 <body>
-    <!-- Desktop mode -->
-    <nav class="nav-container" aria-labelledby="desktop-mode">
-        <div class="logo">
-            <img src="assets/img/TASK AURA.png" alt="logo-pic">
-        </div>
-        <ul>
-            <li>
-                <a href="#">
-                    <i class="uil uil-search"></i> <span>search</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" id="aty-link">
-                    <i class="uil uil-heart-rate"></i> <span>activities</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="#" id="task-link">
-                    <i class="uil uil-list-ul"></i> <span>tasks</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="project-link">
-                    <i class="uil uil-rocket"></i> <span>projects</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-notes"></i> <span>notes</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-graph-bar"></i> <span>statistics</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-setting"></i> <span>setting</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
     <!-- Mobile view -->
     <nav class="nav-cont" aria-labelledby="responsive-devices">
         <ul>
-            <li>
-                <a href="#">
-                    <i class="uil uil-heart-rate"></i> <span>activities</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-list-ul"></i> <span>tasks</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-rocket"></i> <span>projects</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-notes"></i> <span>notes</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="uil uil-graph-bar"></i> <span>statistics</span>
-                </a>
-            </li>
+            <li><a href="#"><i class="uil uil-heart-rate"></i> <span>Activities</span></a></li>
+            <li><a href="#"><i class="uil uil-list-ul"></i> <span>Tasks</span></a></li>
+            <li><a href="#"><i class="uil uil-rocket"></i> <span>Projects</span></a></li>
+            <li><a href="#"><i class="uil uil-notes"></i> <span>Notes</span></a></li>
+            <li><a href="#"><i class="uil uil-graph-bar"></i> <span>Statistics</span></a></li>
         </ul>
     </nav>
 
     <main>
-        <!-- For the Dashboard -->
-        <section>
-            <article>
+            <!-- Desktop Navigation -->
+            <nav class="nav-container" aria-labelledby="desktop-mode">
+                <div class="logo">
+                    <img src="assets/img/TASK AURA.png" alt="logo-pic">
+                </div>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="uil uil-search"></i>
+                            <span>Search</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="uil uil-history">
+                            </i> <span>Activities</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="uil uil-list-ul"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="uil uil-rocket">
+                            </i> <span>Projects</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="uil uil-notes"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="uil uil-graph-bar">
+                            </i> <span>Statistics</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="uil uil-setting">
+                            </i> <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Dashboard Section -->
+            <article class="main-article">
                 <div class="title-article">
                     <div class="username">Hello,</div>
                     <div class="search-box">
                         <input type="search" id="search-bar" placeholder="Search tasks, projects and notes...">
-                        <button>
-                            <i class="uil uil-search"></i>
-                        </button>
+                        <button><i class="uil uil-search"></i></button>
                     </div>
                 </div>
-        
-                <div class="dashboard" id="Dashboard">
-                </div>
+                <div class="dashboard" id="Dashboard"></div>
             </article>
-        
-            <!-- Side article -->
-            <article>
+
+            <!-- Statistics Section -->
+            <article class="side-article">
                 <div class="stats"></div>
                 <div class="tot-proj"></div>
                 <div class="tot-task"></div>
@@ -119,143 +99,50 @@
                 <div class="ong-proj"></div>
                 <div class="on-hold-proj"></div>
             </article>
-        </section>
-
-        <!-- Task only -->
-        
-        <section style="display: none;" id="Task-box">
-            <div class="close-box">
-                <button id="close-btn">
-                    <i class="uil uil-times"></i>
-                </button>
-            </div>
-        
-            <div class="task-space">
-                <div class="create-space">
-                    <h2>Create A New Task</h2>
-                    <button id="task-btn">
-                        <i class="uil uil-plus"></i>
-                    </button>
-                    <button id="close-tsk-ctn" style="display: none;">
-                        <i class="uil uil-times"></i>
-                    </button>
-        
-                    <form id="task-creation">
-                        <input type="text" id="task-name" placeholder="Task name..." />
-                        <textarea id="about-task" rows="2" placeholder="About task..."></textarea>
-        
-                        <label for="start-date">Start date</label>
-                        <div class="start-dd-box date-box">
-                            <input type="date" id="start-dd">
-                        </div>
-        
-                        <label for="end-date">End date</label>
-                        <div class="end-dd-box date-box">
-                            <input type="date" id="end-dd">
-                        </div>
-        
-                        <div class="sub-task-box">
-                            <div class="sub-task-heading">
-                                <label for="sub-tasks">Sub-tasks</label>
-                                <button type="button" id="add-sub-task">
-                                    <i class="uil uil-plus"></i>
-                                </button>
-                            </div>
-        
-                            <div id="sub-task-body"></div>
-                            <div class="project-status">
-                                <label for="status-select">Status</label>
-                                <select id="status-select">
-                                    <option value="completed">Completed</option>
-                                    <option value="in-progress">In Progress</option>
-                                    <option value="on-hold">On Hold</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" id="submit-btn">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Activity tab -->
-        <section id="activity-tab" style="display: none;">
-            <div class="close-box">
-                <h1> Activities </h1>
-                <button id="activity-close-btn">
-                    <i class="uil uil-times"></i>
-                </button>
-            </div>
-
-            <div id="activity-box">
-                <h3><i class="uil uil-list-ul"></i> Tasks...</h3>
-                <div id="Task-output"></div>
-
-                <h3><i class="uil uil-rocket"></i> Projects...</h3>
-                <div id="Project-output"></div>
-
-                <h3><i class="uil uil-notes"></i> Notes...</h3>
-                <div id="Note-output"></div>
-            </div>
-        </section>
-
-        <!-- Project tab -->
-        <section id="project-tab" style="display: none;">
-            <div class="close-box">
-                <button id="project-close-btn">
-                    <i class="uil uil-times"></i>
-                </button>
-            </div>
-        
-            <div class="project-space">
-                <div class="create-space">
-                    <h2>Create A New Project</h2>
-                    <button id="project-btn">
-                        <i class="uil uil-plus"></i>
-                    </button>
-                    <button id="close-prj-ctn" style="display: none;">
-                        <i class="uil uil-times"></i>
-                    </button>
-        
-                    <form id="project-creation">
-                        <input type="text" id="project-name" placeholder="Project name..." />
-                        <textarea id="about-project" rows="2" placeholder="About project..."></textarea>
-        
-                        <label for="proj-start-dd">Start date</label>
-                        <div class="start-dd-box date-box">
-                            <input type="date" id="proj-start-dd">
-                        </div>
-        
-                        <label for="proj-end-dd">End date</label>
-                        <div class="end-dd-box date-box">
-                            <input type="date" id="proj-end-dd">
-                        </div>
-        
-                        <div class="sub-proj-box">
-                            <div class="sub-proj-heading">
-                                <label for="sub-proj">Sub-projects</label>
-                                <button type="button" id="add-sub-proj">
-                                    <i class="uil uil-plus"></i>
-                                </button>
-                            </div>
-        
-                            <div id="sub-proj-body"></div>
-                            <div class="project-status">
-                                <label for="status-select">Status</label>
-                                <select id="status-select">
-                                    <option value="completed">Completed</option>
-                                    <option value="in-progress">In Progress</option>
-                                    <option value="on-hold">On Hold</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" id="submit-btn">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
     </main>
+
+    <div class="add-btn-box">
+        <button class="add-btn">
+            <i class="uil uil-plus"></i>
+        </button>
+
+        <button class="rem-btn" style="display: none;">
+            <i class="uil uil-times"></i>
+        </button>
+    </div>
+
+    <div class="btn-tab" style="display: none;">
+        <button class="tsk-btn"> new task </button>
+        <button class="prj-btn"> new project </button>
+        <button class="note-btn"> new notes </button>
+    </div>
+
+    <!-- Task container -->
+    <div class="tsk-cont" style="display: none;">
+        <div class="close-box">
+            <button class="close-btn">
+                <i class="uil uil-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Project container -->
+    <div class="prj-cont" style="display: none;">
+        <div class="close-box">
+            <button class="close-btn">
+                <i class="uil uil-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Note container -->
+    <div class="note-cont" style="display: none;">
+        <div class="close-box">
+            <button class="close-btn">
+                <i class="uil uil-times"></i>
+            </button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
