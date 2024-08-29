@@ -33,15 +33,23 @@ remBtn.addEventListener("click", function() {
 });
 
 // tsk, prj and note btn 
+// Buttons to trigger containers
+// Buttons to trigger containers
+// Selecting buttons and containers
 const tskBtn = document.querySelector(".tsk-btn");
 const projBtn = document.querySelector(".prj-btn");
 const noteBtn = document.querySelector(".note-btn");
 
-// their containers
+// Containers
 const tskCont = document.querySelector(".tsk-cont");
 const prjCont = document.querySelector(".prj-cont");
 const noteCont = document.querySelector(".note-cont");
 
+// Date container and Next button
+const nextBtn = document.querySelector(".next-btn");
+const dateContainer = document.querySelector(".date-container");
+
+// Event listeners for opening containers
 tskBtn.addEventListener("click", function() {
     tskCont.style.display = "flex";
     prjCont.style.display = "none";
@@ -60,10 +68,32 @@ noteBtn.addEventListener("click", function() {
     tskCont.style.display = "none";
 });
 
-// the close button 
-const closeBtn = document.querySelector(".close-btn");
-closeBtn.addEventListener("click", function() {
-    tskCont.style.display = "none";
-    prjCont.style.display = "none";
-    noteCont.style.display = "none"
+// Event listeners for all close buttons
+const closeBtns = document.querySelectorAll(".close-btn");
+closeBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        tskCont.style.display = "none";
+        prjCont.style.display = "none";
+        noteCont.style.display = "none";
+    });
 });
+
+// Next button functionality
+nextBtn.addEventListener("click", function() {
+  const taskName = document.getElementById("task-name").value;
+  const aboutTask = document.getElementById("about-task").value;
+
+  if (taskName && aboutTask) {
+    // Hide the workflow section
+    document.querySelector(".work-flow").style.display = "none";
+
+    // Display the date container
+    dateContainer.style.display = "flex";
+
+    // Scroll to the date container to ensure it's visible
+    dateContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    alert("Please fill out the task name and description before proceeding.");
+  }
+});
+
