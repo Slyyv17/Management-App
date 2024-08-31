@@ -75,23 +75,31 @@ closeBtns.forEach(function(btn) {
         tskCont.style.display = "none";
         prjCont.style.display = "none";
         noteCont.style.display = "none";
+        tskResult.style.display = "none";
     });
+});
+
+
+// tsk result
+const tskResultBtn = document.getElementById("tsk-result-btn");
+const tskResult = document.querySelector(".tsk-result");
+
+tskResultBtn.addEventListener("click", function () {
+    tskResult.style.display = "flex";
+    tskCont.style.display = "none";
+    prjCont.style.display = "none";
+    noteCont.style.display = "none";
 });
 
 // Next button functionality
 nextBtn.addEventListener("click", function() {
-  const taskName = document.getElementById("task-name").value;
-  const aboutTask = document.getElementById("about-task").value;
-
-  if (taskName && aboutTask) {
-    // Hide the workflow section
-    document.querySelector(".work-flow").style.display = "none";
-
-    // Display the date container
-    dateContainer.style.display = "flex";
-
-    // Scroll to the date container to ensure it's visible
-    dateContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+    const taskName = document.getElementById("task-name").value;
+    const aboutTask = document.getElementById("about-task").value;
+    const startDate = document.getElementById("start-date").value;
+    const endDate = document.getElementById("end-date").value;
+    
+  if (taskName && aboutTask && startDate && endDate) {
+      
   } else {
     alert("Please fill out the task name and description before proceeding.");
   }

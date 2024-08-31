@@ -13,6 +13,7 @@
     --tet-clr: rgb(78, 78, 78);
     --bg-drop: #FAFAFB;
     --main-clr: #000;
+    --rdm-clr: #333;
     --ff: 'Satoshi', sans-serif;
     --bx-shadow: rgb(0, 0, 0, 0.1);
     --close-btn: rgb(255, 0, 0);
@@ -317,8 +318,8 @@ main .side-article {
     box-shadow: 2px 2px 10px var(--bx-shadow);
     background-color: var(--sec-clr);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: column;
     padding: 1em;
     /* Add padding for better spacing inside */
@@ -354,12 +355,49 @@ main .side-article {
 :is(.tsk-cont, .prj-cont, .note-cont) 
 .work-flow {
     width: 100%;
-    height: fit-content;
+    max-height: 15em;
     padding: 1em;
     border: 1px dashed black;
     display: flex;
     flex-direction: column;
     gap: 1em;
+    overflow-y: auto;
+}
+
+:is(.tsk-cont, .prj-cont, .note-cont)
+.work-flow::-webkit-scrollbar {
+    width: 12px;
+}
+
+:is(.tsk-cont, .prj-cont, .note-cont)
+.work-flow::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+:is(.tsk-cont, .prj-cont, .note-cont)
+.work-flow::-webkit-scrollbar-thumb {
+    background-color: var(--bg-drop);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: none;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+    -moz-transition: all 500ms;
+    -ms-transition: all 500ms;
+    -o-transition: all 500ms;
+}
+
+:is(.tsk-cont, .prj-cont, .note-cont)
+.work-flow::-webkit-scrollbar-thumb:hover {
+    background-color: var(--tet-clr);
 }
 
 /* Input field for task name */
@@ -372,13 +410,16 @@ main .side-article {
     box-sizing: border-box;
     box-shadow: 2px 2px 10px var(--bx-shadow);
     font-family: var(--ff);
-    text-transform: capitalize;
 }
 
 /* Input focus */
 .name-box input:focus,
 .about-box textarea:focus {
     outline: none;
+}
+
+input::placeholder {
+    text-transform: capitalize;
 }
 
 /* Textarea for task description */
@@ -427,7 +468,7 @@ main .side-article {
     gap: 1em;
 }
 
-.date-container .date-box {
+.work-flow .date-box {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -477,6 +518,42 @@ main .side-article {
 .next-btn:hover {
     box-shadow: 0px 0px 5px var(--bx-shadow);
 }
+
+/* their individual output */
+.tsk-result {
+    width: 100%;
+    max-width: 40em;
+    border: 1px solid var(--sec-clr);
+    height: fit-content;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center horizontally */
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 10px var(--bx-shadow);
+    background-color: var(--sec-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.tsk-result .close-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: fit-content;
+    /* Align close button to the right */
+    align-items: center;
+    padding: 0.2em 0.2em 0 0;
+    border-bottom: 1px dashed black;
+    /* Instead of full border */
+    gap: 1em;
+}
+
 
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {

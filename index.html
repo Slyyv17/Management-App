@@ -45,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="#" id="tsk-result-btn">
                             <i class="uil uil-list-ul"></i>
                             <span>Tasks</span>
                         </a>
@@ -131,20 +131,19 @@
             </div>
 
             <div class="about-box">
-                <textarea id="about-task" rows="5" placeholder="about task..."></textarea>
+                <textarea id="about-task" rows="2" placeholder="about task..."></textarea>
             </div>
 
-            <button class="next-btn"> next </button>
-
-            <div class="date-container" style="display: none;">
-                <div class="date-box">
-                    <input type="date" id="start-date">
-                </div>
-                
-                <div class="date-box">
-                    <input type="date" id="end-date">
-                </div>
+            <!-- Duration date -->
+            <div class="date-box">
+                <input type="date" id="start-date">
             </div>
+            
+            <div class="date-box">
+                <input type="date" id="end-date">
+            </div>
+
+            <button class="next-btn"> create </button>
         </div>
     </div>
 
@@ -159,6 +158,14 @@
 
     <!-- Note container -->
     <div class="note-cont" style="display: none;">
+        <div class="close-box">
+            <button class="close-btn">
+                <i class="uil uil-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="tsk-result" style="display: none;">
         <div class="close-box">
             <button class="close-btn">
                 <i class="uil uil-times"></i>
