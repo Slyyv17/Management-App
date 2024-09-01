@@ -14,6 +14,7 @@
     --bg-drop: #FAFAFB;
     --main-clr: #000;
     --rdm-clr: #333;
+    --tsk-ctn-bg: #e7f3ff;
     --ff: 'Satoshi', sans-serif;
     --bx-shadow: rgb(0, 0, 0, 0.1);
     --close-btn: rgb(255, 0, 0);
@@ -524,7 +525,7 @@ textarea::placeholder {
     box-shadow: 0px 0px 5px var(--bx-shadow);
 }
 
-/* their individual output */
+/* Task Result Container */
 .tsk-result {
     width: 100%;
     max-width: 40em;
@@ -534,7 +535,6 @@ textarea::placeholder {
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    /* Center horizontally */
     border-radius: 0.5em;
     box-shadow: 2px 2px 10px var(--bx-shadow);
     background-color: var(--sec-clr);
@@ -544,19 +544,89 @@ textarea::placeholder {
     flex-direction: column;
     padding: 1em;
     box-sizing: border-box;
+    z-index: 1000;
+    /* Make sure it's on top */
 }
 
+/* Close Button Styling */
 .tsk-result .close-box {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    height: fit-content;
-    /* Align close button to the right */
     align-items: center;
     padding: 0.2em 0.2em 0 0;
     border-bottom: 1px dashed black;
-    /* Instead of full border */
     gap: 1em;
+}
+
+/* Task Result Content Styling */
+.tsk-result .task-result-content {
+    width: 100%;
+    height: fit-content;
+    border: 1px dashed #000;
+    padding: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* Individual Task Item Styling */
+.task-item {
+    background-color: var(--tsk-ctn-bg);
+    border: 1px solid var(--tsk-ctn-bg);
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-item .task-pg {
+    border: none;
+    /* padding: 1em; */
+    border-radius: 0.5em;
+    width: 100%;
+    /* margin: 0.5em 0; */
+    font-size: 1em;
+    color: var(--rdm-clr);
+    display: -webkit-box;
+    /* Required for text truncation */
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    -o-box-orient: vertical;
+    box-orient: vertical;
+    /* Number of lines before ellipsis */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: fit-content;
+}
+
+.task-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.1em;
+    color: var(--main-clr);
+}
+
+.task-pg p {
+    margin: 0.5em 0;
+    font-size: 1em;
+    color: var(--rdm-clr);
+}
+
+.task-item strong {
+    color: var(--main-clr);
 }
 
 

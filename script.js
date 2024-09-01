@@ -94,17 +94,20 @@ nextBtn.addEventListener("click", function () {
     if (!taskName || !aboutTask || !startDate || !endDate) {
         alert("Please fill out all fields before proceeding.");
         return;
+    } else {
+        // / Function to display task result
+        tskSubmitContainer(taskName, aboutTask, startDate, endDate);
+
+        // Hide the task creation form and show the task result section
+        // tskCont.style.display = 'none';
+        // tskResult.style.display = 'flex';
+
+        // Disable 'Next' button after submission
+        nextBtn.style.display = "block";
+
+        // clear the contents of the task container after submission
+        clearTskCont();
     }
-
-    // Function to display task result
-    tskSubmitContainer(taskName, aboutTask, startDate, endDate);
-
-    // Hide the task creation form and show the task result section
-    tskCont.style.display = 'none';
-    tskResult.style.display = 'flex';
-
-    // Disable 'Next' button after submission
-    nextBtn.style.display = "none";
 });
 
 // Disable Past Dates in Date Pickers
@@ -128,11 +131,12 @@ tskResultBtn.addEventListener("click", function () {
 function tskSubmitContainer(taskName, aboutTask, startDate, endDate) {
     taskResultContent.innerHTML = `
         <div class="task-item">
-            <h3>Task Details</h3>
-            <p><strong>Task Name:</strong> ${taskName}</p>
-            <p><strong>About Task:</strong> ${aboutTask}</p>
-            <p><strong>Start Date:</strong> ${startDate}</p>
-            <p><strong>End Date:</strong> ${endDate}</p>
+            <h3>${taskName}</h3>
+            <div class="task-pg">
+                <p>${aboutTask}</p>
+            </div>
+            <p><strong> Start-date: </strong>${startDate}</p>
+            <p><strong> End-date: </strong>${endDate}</p>
         </div>
     `;
 }
