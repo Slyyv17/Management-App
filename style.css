@@ -432,8 +432,13 @@ input::placeholder {
     box-sizing: border-box;
     box-shadow: 2px 2px 10px var(--bx-shadow);
     font-family: var(--ff);
+    line-height: 1.5;
+    field-sizing: content;
+    min-height: 3lh;
+}
+
+textarea::placeholder {
     text-transform: capitalize;
-    min-height: 5em;
 }
 
 /* Next button styling */

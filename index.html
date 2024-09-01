@@ -45,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a href="#" id="tsk-result-btn">
+                        <a href="#" class="tsk-result-btn">
                             <i class="uil uil-list-ul"></i>
                             <span>Tasks</span>
                         </a>
@@ -60,12 +60,6 @@
                     <li>
                         <a href="#"><i class="uil uil-notes"></i>
                             <span>Notes</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="uil uil-graph-bar">
-                            </i> <span>Statistics</span>
                         </a>
                     </li>
 
@@ -101,53 +95,54 @@
             </article>
     </main>
 
+    <!-- Add Button Container -->
     <div class="add-btn-box">
         <button class="add-btn">
             <i class="uil uil-plus"></i>
         </button>
-
+    
         <button class="rem-btn" style="display: none;">
             <i class="uil uil-times"></i>
         </button>
     </div>
-
+    
+    <!-- Button Tab -->
     <div class="btn-tab" style="display: none;">
-        <button class="tsk-btn"> new task </button>
-        <button class="prj-btn"> new project </button>
-        <button class="note-btn"> new notes </button>
+        <button class="tsk-btn">new task</button>
+        <button class="prj-btn">new project</button>
+        <button class="note-btn">new notes</button>
     </div>
-
-    <!-- Task container -->
+    
+    <!-- Task Container -->
     <div class="tsk-cont" style="display: none;">
         <div class="close-box">
             <button class="close-btn">
                 <i class="uil uil-times"></i>
             </button>
         </div>
-
+    
         <div class="work-flow">
             <div class="name-box">
                 <input type="text" id="task-name" placeholder="task name...">
             </div>
-
+    
             <div class="about-box">
                 <textarea id="about-task" rows="2" placeholder="about task..."></textarea>
             </div>
-
-            <!-- Duration date -->
+    
             <div class="date-box">
                 <input type="date" id="start-date">
             </div>
-            
+    
             <div class="date-box">
                 <input type="date" id="end-date">
             </div>
-
-            <button class="next-btn"> create </button>
+    
+            <button class="next-btn">create</button>
         </div>
     </div>
-
-    <!-- Project container -->
+    
+    <!-- Project Container -->
     <div class="prj-cont" style="display: none;">
         <div class="close-box">
             <button class="close-btn">
@@ -155,8 +150,8 @@
             </button>
         </div>
     </div>
-
-    <!-- Note container -->
+    
+    <!-- Note Container -->
     <div class="note-cont" style="display: none;">
         <div class="close-box">
             <button class="close-btn">
@@ -164,14 +159,17 @@
             </button>
         </div>
     </div>
-
+    
+    <!-- Task Result -->
     <div class="tsk-result" style="display: none;">
         <div class="close-box">
             <button class="close-btn">
                 <i class="uil uil-times"></i>
             </button>
         </div>
+        <div class="task-result-content"></div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

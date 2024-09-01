@@ -1,9 +1,9 @@
+// Add & Remove Button Functionality
 const addBtn = document.querySelector(".add-btn");
 const remBtn = document.querySelector(".rem-btn");
 const btnTab = document.querySelector(".btn-tab");
 
-addBtn.addEventListener("click", function() {
-    // Slide the tab up and show it
+addBtn.addEventListener("click", function () {
     btnTab.style.display = "grid";
     setTimeout(() => {
         btnTab.classList.add("visible");  // Slide up with animation
@@ -14,8 +14,7 @@ addBtn.addEventListener("click", function() {
     remBtn.style.display = "block";
 });
 
-remBtn.addEventListener("click", function() {
-    // Slide the tab down and hide it
+remBtn.addEventListener("click", function () {
     btnTab.classList.add("hidden");   // Slide down with animation
     btnTab.classList.remove("visible");
 
@@ -32,46 +31,43 @@ remBtn.addEventListener("click", function() {
     }, 500); // Wait for rotation before switching buttons
 });
 
-// tsk, prj and note btn 
-// Buttons to trigger containers
-// Buttons to trigger containers
-// Selecting buttons and containers
+// Task, Project, and Notes Button Functionality
 const tskBtn = document.querySelector(".tsk-btn");
 const projBtn = document.querySelector(".prj-btn");
 const noteBtn = document.querySelector(".note-btn");
 
-// Containers
 const tskCont = document.querySelector(".tsk-cont");
 const prjCont = document.querySelector(".prj-cont");
 const noteCont = document.querySelector(".note-cont");
+const tskResult = document.querySelector(".tsk-result"); // Task result container
+const taskResultContent = document.querySelector(".task-result-content"); // Content of the task result
 
-// Date container and Next button
-const nextBtn = document.querySelector(".next-btn");
-const dateContainer = document.querySelector(".date-container");
-
-// Event listeners for opening containers
-tskBtn.addEventListener("click", function() {
+// Buttons to switch between task, project, and notes
+tskBtn.addEventListener("click", function () {
     tskCont.style.display = "flex";
     prjCont.style.display = "none";
     noteCont.style.display = "none";
+    tskResult.style.display = "none"; // Hide the result section when switching
 });
 
-projBtn.addEventListener("click", function() {
+projBtn.addEventListener("click", function () {
     prjCont.style.display = "flex";
     tskCont.style.display = "none";
     noteCont.style.display = "none";
+    tskResult.style.display = "none";
 });
 
-noteBtn.addEventListener("click", function() {
+noteBtn.addEventListener("click", function () {
     noteCont.style.display = "flex";
     prjCont.style.display = "none";
     tskCont.style.display = "none";
+    tskResult.style.display = "none";
 });
 
-// Event listeners for all close buttons
+// Close Buttons Functionality
 const closeBtns = document.querySelectorAll(".close-btn");
-closeBtns.forEach(function(btn) {
-    btn.addEventListener("click", function() {
+closeBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
         tskCont.style.display = "none";
         prjCont.style.display = "none";
         noteCont.style.display = "none";
@@ -79,29 +75,72 @@ closeBtns.forEach(function(btn) {
     });
 });
 
+// Task Submission and Task Result Button
+const nextBtn = document.querySelector(".next-btn");
+const taskNameInput = document.getElementById("task-name");
+const aboutTaskInput = document.getElementById("about-task");
+const startDateInput = document.getElementById("start-date");
+const endDateInput = document.getElementById("end-date");
+const tskResultBtn = document.querySelector(".tsk-result-btn");
 
-// tsk result
-const tskResultBtn = document.getElementById("tsk-result-btn");
-const tskResult = document.querySelector(".tsk-result");
+// Function to handle task submission and validation
+nextBtn.addEventListener("click", function () {
+    const taskName = taskNameInput.value.trim();
+    const aboutTask = aboutTaskInput.value.trim();
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
 
+    // Validation: Ensure task name, description, and dates are filled
+    if (!taskName || !aboutTask || !startDate || !endDate) {
+        alert("Please fill out all fields before proceeding.");
+        return;
+    }
+
+    // Function to display task result
+    tskSubmitContainer(taskName, aboutTask, startDate, endDate);
+
+    // Hide the task creation form and show the task result section
+    tskCont.style.display = 'none';
+    tskResult.style.display = 'flex';
+
+    // Disable 'Next' button after submission
+    nextBtn.style.display = "none";
+});
+
+// Disable Past Dates in Date Pickers
+const today = new Date().toISOString().split('T')[0];
+startDateInput.setAttribute('min', today);
+
+// Ensure the end date cannot be before the selected start date
+startDateInput.addEventListener('change', function () {
+    const selectedStartDate = startDateInput.value;
+    if (selectedStartDate) {
+        endDateInput.setAttribute('min', selectedStartDate);
+    }
+});
+
+// Function to handle task result button
 tskResultBtn.addEventListener("click", function () {
-    tskResult.style.display = "flex";
-    tskCont.style.display = "none";
-    prjCont.style.display = "none";
-    noteCont.style.display = "none";
+    tskResult.style.display = 'flex';
 });
 
-// Next button functionality
-nextBtn.addEventListener("click", function() {
-    const taskName = document.getElementById("task-name").value;
-    const aboutTask = document.getElementById("about-task").value;
-    const startDate = document.getElementById("start-date").value;
-    const endDate = document.getElementById("end-date").value;
-    
-  if (taskName && aboutTask && startDate && endDate) {
-      
-  } else {
-    alert("Please fill out the task name and description before proceeding.");
-  }
-});
+// Function to display task result
+function tskSubmitContainer(taskName, aboutTask, startDate, endDate) {
+    taskResultContent.innerHTML = `
+        <div class="task-item">
+            <h3>Task Details</h3>
+            <p><strong>Task Name:</strong> ${taskName}</p>
+            <p><strong>About Task:</strong> ${aboutTask}</p>
+            <p><strong>Start Date:</strong> ${startDate}</p>
+            <p><strong>End Date:</strong> ${endDate}</p>
+        </div>
+    `;
+}
 
+// Function to clear the task container after submission
+function clearTskCont() {
+    taskNameInput.value = '';
+    aboutTaskInput.value = '';
+    startDateInput.value = '';
+    endDateInput.value = '';
+}
