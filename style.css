@@ -137,7 +137,7 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 1em;
 }
 
 .nav-container ul li {
@@ -164,6 +164,62 @@ body {
 .nav-container ul li a:hover {
     background-color: var(--pry-clr);
     border-radius: 0.5em;
+    color: var(--sec-clr);
+}
+
+/* Styling the sub-menu */
+.setting-menu {
+    position: relative;
+    /* Ensure that the dropdown is positioned relative to the parent */
+}
+
+.setting-menu .sub-menu {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 90%;
+    background-color: var(--sec-clr);
+    border: 1px solid var(--sec-clr);
+    box-shadow: 2px 2px 5px var(--bx-shadow);
+    list-style: none;
+    width: 100%;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s ease, visibility 0.5s ease;
+    -moz-transition: opacity 0.5s ease, visibility 0.5s ease;
+    -ms-transition: opacity 0.5s ease, visibility 0.5s ease;
+    -o-transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.setting-menu:hover .sub-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sub-menu li {
+    width: 100%;
+    text-align: center;
+    padding: 0.1em 0.5em;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.5s ease, color 0.3s ease;
+    -moz-transition: background-color 0.5s ease, color 0.3s ease;
+    -ms-transition: background-color 0.5s ease, color 0.3s ease;
+    -o-transition: background-color 0.5s ease, color 0.3s ease;
+    color: var(--rdm-clr);
+}
+
+.sub-menu li a {
+    color: var(--rdm-clr);
+    text-decoration: none;
+    display: block;
+    /* Ensure the entire area is clickable */
+}
+
+.sub-menu li:hover {
+    background-color: var(--pry-clr);
     color: var(--sec-clr);
 }
 
@@ -398,7 +454,7 @@ main .side-article {
 
 :is(.tsk-cont, .prj-cont, .note-cont)
 .work-flow::-webkit-scrollbar-thumb:hover {
-    background-color: var(--tet-clr);
+    background-color: var(--bx-shadow);
 }
 
 /* Input field for task name */
@@ -529,8 +585,9 @@ textarea::placeholder {
 .tsk-result {
     width: 100%;
     max-width: 40em;
+    max-height: 80vh;
+    /* Allow for height limitation */
     border: 1px solid var(--sec-clr);
-    height: fit-content;
     position: absolute;
     top: 20%;
     left: 50%;
@@ -539,13 +596,12 @@ textarea::placeholder {
     box-shadow: 2px 2px 10px var(--bx-shadow);
     background-color: var(--sec-clr);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-direction: column;
     padding: 1em;
     box-sizing: border-box;
     z-index: 1000;
-    /* Make sure it's on top */
+    overflow-y: auto;
+    /* Contain overflow */
 }
 
 /* Close Button Styling */
@@ -562,18 +618,54 @@ textarea::placeholder {
 /* Task Result Content Styling */
 .tsk-result .task-result-content {
     width: 100%;
-    height: fit-content;
-    border: 1px dashed #000;
+    max-height: 25em;
+    /* Make sure this is set */
+    overflow-y: auto;
+    /* Enable scrolling when content exceeds the height */
     padding: 1em;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+    border: 1px dashed red;
     gap: 0.5em;
+}
+
+/* scroll bar for the task result content */
+.task-result-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.task-result-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.task-result-content::-webkit-scrollbar-thumb {
+    background-color: var(--bg-drop);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: none;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+    -moz-transition: all 500ms;
+    -ms-transition: all 500ms;
+    -o-transition: all 500ms;
+}
+
+.task-result-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--bx-shadow);
 }
 
 /* Individual Task Item Styling */
 .task-item {
+    width: 100%;
     background-color: var(--tsk-ctn-bg);
     border: 1px solid var(--tsk-ctn-bg);
     padding: 1em;
@@ -583,10 +675,9 @@ textarea::placeholder {
 
 .task-item .task-pg {
     border: none;
-    /* padding: 1em; */
     border-radius: 0.5em;
     width: 100%;
-    /* margin: 0.5em 0; */
+    margin-bottom: 0.5em;
     font-size: 1em;
     color: var(--rdm-clr);
     display: -webkit-box;
@@ -596,21 +687,10 @@ textarea::placeholder {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-box;
-    display: -o-box;
     display: box;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -ms-box-orient: vertical;
-    -o-box-orient: vertical;
-    box-orient: vertical;
-    /* Number of lines before ellipsis */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: fit-content;
 }
 
 .task-item h3 {

@@ -129,7 +129,8 @@ tskResultBtn.addEventListener("click", function () {
 
 // Function to display task result
 function tskSubmitContainer(taskName, aboutTask, startDate, endDate) {
-    taskResultContent.innerHTML = `
+   // Append the new task item to the task result content
+    taskResultContent.insertAdjacentHTML('beforeend', `
         <div class="task-item">
             <h3>${taskName}</h3>
             <div class="task-pg">
@@ -138,8 +139,7 @@ function tskSubmitContainer(taskName, aboutTask, startDate, endDate) {
             <p><strong> Start-date: </strong>${startDate}</p>
             <p><strong> End-date: </strong>${endDate}</p>
         </div>
-    `;
-}
+    `);}
 
 // Function to clear the task container after submission
 function clearTskCont() {
