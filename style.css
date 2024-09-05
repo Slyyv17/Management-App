@@ -564,6 +564,57 @@ textarea::placeholder {
     outline: none;
 }
 
+/* status container */
+#status-btn {
+    width: 7em;
+    height: 5em;
+    padding: 0.5em;
+    border: 1px solid var(--pry-clr);
+    background-color: var(--pry-clr);
+    border-radius: 1.5em;
+    color: var(--sec-clr);
+    font-family: var(--ff);
+    -webkit-border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -ms-border-radius: 1.5em;
+    -o-border-radius: 1.5em;
+    cursor: pointer;
+}
+
+.status-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 30em;
+    height: fit-content;
+    background-color: #f1f1f1;
+    border: 1px solid #333;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: height 0.5s ease;
+}
+
+.status-box ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-direction: column;
+}
+
+.status-box ul li {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    transition: all 500ms;
+}
+
+.status-box ul li:hover {
+    background-color: aqua;
+    cursor: pointer;
+}
+
 /* Submit button styling */
 .next-btn {
     padding: 0.7em;

@@ -1,150 +1,163 @@
 // Add & Remove Button Functionality
-const addBtn = document.querySelector(".add-btn");
-const remBtn = document.querySelector(".rem-btn");
-const btnTab = document.querySelector(".btn-tab");
+    const addBtn = document.querySelector(".add-btn");
+    const remBtn = document.querySelector(".rem-btn");
+    const btnTab = document.querySelector(".btn-tab");
 
-addBtn.addEventListener("click", function () {
-    btnTab.style.display = "grid";
-    setTimeout(() => {
-        btnTab.classList.add("visible");  // Slide up with animation
+    addBtn.addEventListener("click", function () {
+      btnTab.style.display = "grid";
+      setTimeout(() => {
+        btnTab.classList.add("visible");
         btnTab.classList.remove("hidden");
-    }, 50); // Add slight delay for smoothness
+      }, 50);
 
-    addBtn.style.display = "none";
-    remBtn.style.display = "block";
-});
+      addBtn.style.display = "none";
+      remBtn.style.display = "block";
+    });
 
-remBtn.addEventListener("click", function () {
-    btnTab.classList.add("hidden");   // Slide down with animation
-    btnTab.classList.remove("visible");
+    remBtn.addEventListener("click", function () {
+      btnTab.classList.add("hidden");
+      btnTab.classList.remove("visible");
 
-    setTimeout(() => {
+      setTimeout(() => {
         btnTab.style.display = "none";
-    }, 500); // Match the duration of the slide animation
+      }, 500);
 
-    remBtn.style.transform = "rotate(360deg)";
-    remBtn.style.transition = "transform 0.5s ease"; // Rotate the remove button
+      remBtn.style.transform = "rotate(360deg)";
+      remBtn.style.transition = "transform 0.5s ease";
 
-    setTimeout(() => {
+      setTimeout(() => {
         remBtn.style.display = "none";
         addBtn.style.display = "block";
-    }, 500); // Wait for rotation before switching buttons
-});
-
-// Task, Project, and Notes Button Functionality
-const tskBtn = document.querySelector(".tsk-btn");
-const projBtn = document.querySelector(".prj-btn");
-const noteBtn = document.querySelector(".note-btn");
-
-const tskCont = document.querySelector(".tsk-cont");
-const prjCont = document.querySelector(".prj-cont");
-const noteCont = document.querySelector(".note-cont");
-const tskResult = document.querySelector(".tsk-result"); // Task result container
-const taskResultContent = document.querySelector(".task-result-content"); // Content of the task result
-
-// Buttons to switch between task, project, and notes
-tskBtn.addEventListener("click", function () {
-    tskCont.style.display = "flex";
-    prjCont.style.display = "none";
-    noteCont.style.display = "none";
-    tskResult.style.display = "none"; // Hide the result section when switching
-});
-
-projBtn.addEventListener("click", function () {
-    prjCont.style.display = "flex";
-    tskCont.style.display = "none";
-    noteCont.style.display = "none";
-    tskResult.style.display = "none";
-});
-
-noteBtn.addEventListener("click", function () {
-    noteCont.style.display = "flex";
-    prjCont.style.display = "none";
-    tskCont.style.display = "none";
-    tskResult.style.display = "none";
-});
-
-// Close Buttons Functionality
-const closeBtns = document.querySelectorAll(".close-btn");
-closeBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-        tskCont.style.display = "none";
-        prjCont.style.display = "none";
-        noteCont.style.display = "none";
-        tskResult.style.display = "none";
+      }, 500);
     });
-});
 
-// Task Submission and Task Result Button
-const nextBtn = document.querySelector(".next-btn");
-const taskNameInput = document.getElementById("task-name");
-const aboutTaskInput = document.getElementById("about-task");
-const startDateInput = document.getElementById("start-date");
-const endDateInput = document.getElementById("end-date");
-const tskResultBtn = document.querySelector(".tsk-result-btn");
+    // Task, Project, and Notes Button Functionality
+    const tskBtn = document.querySelector(".tsk-btn");
+    const projBtn = document.querySelector(".prj-btn");
+    const noteBtn = document.querySelector(".note-btn");
 
-// Function to handle task submission and validation
-nextBtn.addEventListener("click", function () {
-    const taskName = taskNameInput.value.trim();
-    const aboutTask = aboutTaskInput.value.trim();
-    const startDate = startDateInput.value;
-    const endDate = endDateInput.value;
+    const tskCont = document.querySelector(".tsk-cont");
+    const prjCont = document.querySelector(".prj-cont");
+    const noteCont = document.querySelector(".note-cont");
+    const tskResult = document.querySelector(".tsk-result");
+    const taskResultContent = document.querySelector(".task-result-content");
 
-    // Validation: Ensure task name, description, and dates are filled
-    if (!taskName || !aboutTask || !startDate || !endDate) {
+    tskBtn.addEventListener("click", function () {
+      tskCont.style.display = "flex";
+      prjCont.style.display = "none";
+      noteCont.style.display = "none";
+      tskResult.style.display = "none";
+    });
+
+    projBtn.addEventListener("click", function () {
+      prjCont.style.display = "flex";
+      tskCont.style.display = "none";
+      noteCont.style.display = "none";
+      tskResult.style.display = "none";
+    });
+
+    noteBtn.addEventListener("click", function () {
+      noteCont.style.display = "flex";
+      prjCont.style.display = "none";
+      tskCont.style.display = "none";
+      tskResult.style.display = "none";
+    });
+
+    // Status Selection
+    const statusBtn = document.getElementById("status-btn");
+    const statusBox = document.querySelector(".status-box");
+    let selectedStatus = "";
+
+    statusBtn.addEventListener("click", function () {
+      if (statusBox.style.display === "none" || statusBox.style.display === "") {
+        statusBox.style.display = "block";
+      } else {
+        statusBox.style.display = "none";
+      }
+    });
+
+    // Listen for clicks on list items and store the selected status
+    const listItems = document.querySelectorAll('.status-box ul li');
+    listItems.forEach(item => {
+      item.addEventListener('click', function () {
+          selectedStatus = this.textContent; // Store the selected status
+          console.log("Selected option: " + selectedStatus);
+        statusBox.style.display = "none"; // Hide the box after selection
+      });
+    });
+
+    // Task Submission and Validation
+    const nextBtn = document.querySelector(".next-btn");
+    const taskNameInput = document.getElementById("task-name");
+    const aboutTaskInput = document.getElementById("about-task");
+    const startDateInput = document.getElementById("start-date");
+    const endDateInput = document.getElementById("end-date");
+
+    nextBtn.addEventListener("click", function () {
+      const taskName = taskNameInput.value.trim();
+      const aboutTask = aboutTaskInput.value.trim();
+      const startDate = startDateInput.value;
+      const endDate = endDateInput.value;
+
+      // Validation: Check for all inputs including status
+      if (!taskName || !aboutTask || !startDate || !endDate) {
         alert("Please fill out all fields before proceeding.");
         return;
-    } else {
-        // / Function to display task result
-        tskSubmitContainer(taskName, aboutTask, startDate, endDate);
+      }
+      if (!selectedStatus) {
+        alert("Please select a status.");
+        return;
+      }
 
-        // Hide the task creation form and show the task result section
-        // tskCont.style.display = 'none';
-        // tskResult.style.display = 'flex';
+      // Display task result
+      displayTaskResult(taskName, aboutTask, startDate, endDate, selectedStatus);
 
-        // Disable 'Next' button after submission
-        nextBtn.style.display = "block";
+      // Clear the task creation form
+      clearTskCont();
+    });
 
-        // clear the contents of the task container after submission
-        clearTskCont();
-    }
-});
+    // Disable Past Dates in Date Pickers
+    const today = new Date().toISOString().split('T')[0];
+    startDateInput.setAttribute('min', today);
 
-// Disable Past Dates in Date Pickers
-const today = new Date().toISOString().split('T')[0];
-startDateInput.setAttribute('min', today);
-
-// Ensure the end date cannot be before the selected start date
-startDateInput.addEventListener('change', function () {
-    const selectedStartDate = startDateInput.value;
-    if (selectedStartDate) {
+    startDateInput.addEventListener('change', function () {
+      const selectedStartDate = startDateInput.value;
+      if (selectedStartDate) {
         endDateInput.setAttribute('min', selectedStartDate);
-    }
-});
+      }
+    });
 
-// Function to handle task result button
-tskResultBtn.addEventListener("click", function () {
-    tskResult.style.display = 'flex';
-});
-
-// Function to display task result
-function tskSubmitContainer(taskName, aboutTask, startDate, endDate) {
-   // Append the new task item to the task result content
-    taskResultContent.insertAdjacentHTML('beforeend', `
+    // Function to display task result
+    function displayTaskResult(taskName, aboutTask, startDate, endDate, status) {
+      taskResultContent.insertAdjacentHTML('beforeend', `
         <div class="task-item">
-            <h3>${taskName}</h3>
-            <div class="task-pg">
-                <p>${aboutTask}</p>
-            </div>
-            <p><strong> Start-date: </strong>${startDate}</p>
-            <p><strong> End-date: </strong>${endDate}</p>
+          <h3>${taskName}</h3>
+          <div class="task-pg">
+            <p>${aboutTask}</p>
+          </div>
+          <p><strong>Start-date:</strong> ${startDate}</p>
+          <p><strong>End-date:</strong> ${endDate}</p>
+          <p><strong>Status:</strong> ${status}</p>
         </div>
-    `);}
+      `);
+      tskResult.style.display = 'flex'; // Show the task result container
+    }
 
-// Function to clear the task container after submission
-function clearTskCont() {
-    taskNameInput.value = '';
-    aboutTaskInput.value = '';
-    startDateInput.value = '';
-    endDateInput.value = '';
-}
+    // Function to clear the task form
+    function clearTskCont() {
+      taskNameInput.value = '';
+      aboutTaskInput.value = '';
+      startDateInput.value = '';
+      endDateInput.value = '';
+      selectedStatus = ''; // Reset the selected status
+    }
+
+    // Hide the status box if clicking outside of it
+    document.addEventListener("click", function (e) {
+      const isClickedInsideBox = statusBox.contains(e.target);
+      const isClickedOnButton = statusBtn.contains(e.target);
+
+      if (!isClickedInsideBox && !isClickedOnButton) {
+        statusBox.style.display = "none";
+      }
+    });

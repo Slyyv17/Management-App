@@ -2,260 +2,109 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Manager</title>
-    <style>
-        /* Basic styling for the project manager */
-        body {
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .project-space {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 30em;
+      height: fit-content;
+      background-color: #f1f1f1;
+      border: 1px solid #333;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      transition: height 0.5s ease;
+    }
 
-        .proj-card {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
+    div ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-direction: column;
+    }
 
-        .tag {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
+    ul li {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      background-color: #333;
+      color: #fff;
+      transition: all 500ms;
+    }
 
-        .completed {
-            background-color: green;
-            color: white;
-        }
+    ul li:hover {
+      background-color: aqua;
+      cursor: pointer;
+    }
 
-        .in-progress {
-            background-color: orange;
-            color: white;
-        }
-
-        .on-hold {
-            background-color: red;
-            color: white;
-        }
-    </style>
+    #result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-    <a id="project-link" href="#">Open Project Tab</a>
-    <section id="project-tab" style="display: none;">
-        <div class="close-box">
-            <button id="project-close-btn">
-                <i class="uil uil-times"></i>
-            </button>
-        </div>
+  <button id="status-btn">Status</button>
+  <div style="display: none;" class="box">
+    <ul>
+      <li>Not Started</li>
+      <li>In Progress</li>
+      <li>Completed</li>
+      <li>On Hold</li>
+    </ul>
+  </div>
 
-        <div class="project-space">
-            <div class="create-space">
-                <h2>Create A New Project</h2>
-                <button id="project-btn">
-                    <i class="uil uil-plus"></i>
-                </button>
-                <button id="close-prj-ctn" style="display: none;">
-                    <i class="uil uil-times"></i>
-                </button>
+  <script>
+    const btn = document.getElementById('status-btn');
+    const box = document.querySelector('.box');
 
-                <form id="project-creation">
-                    <input type="text" id="project-name" placeholder="Project name..." />
-                    <textarea id="about-project" rows="2" placeholder="About project..."></textarea>
+    // Create a result element dynamically
+    const result = document.createElement('p');
+    result.id = 'result';
+    result.style.marginTop = '1rem';
+    result.style.fontSize = '1.2rem';
+    result.style.textAlign = 'center';
+    document.body.appendChild(result); // Append it to the body
 
-                    <label for="proj-start-dd">Start date</label>
-                    <div class="start-dd-box date-box">
-                        <input type="date" id="proj-start-dd">
-                    </div>
+    // Toggle box visibility when button is clicked
+    btn.addEventListener("click", function () {
+      if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+      } else {
+        box.style.display = "none";
+      }
+    });
 
-                    <label for="proj-end-dd">End date</label>
-                    <div class="end-dd-box date-box">
-                        <input type="date" id="proj-end-dd">
-                    </div>
-
-                    <div class="sub-proj-box">
-                        <div class="sub-proj-heading">
-                            <label for="sub-proj">Sub-projects</label>
-                            <button type="button" id="add-sub-proj">
-                                <i class="uil uil-plus"></i>
-                            </button>
-                        </div>
-
-                        <div id="sub-proj-body"></div>
-                        <div class="project-status">
-                            <label for="status-select">Status</label>
-                            <select id="status-select">
-                                <option value="completed">Completed</option>
-                                <option value="in-progress">In Progress</option>
-                                <option value="on-hold">On Hold</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" id="submit-btn">Submit</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <div id="Project-output"></div> <!-- Ensure this ID exists in your HTML -->
-    <script src="script.js">
-        document.addEventListener("DOMContentLoaded", function () {
-  const projectLink = document.getElementById("project-link");
-  const projectCloseBtn = document.getElementById("project-close-btn");
-  const projectTab = document.getElementById("project-tab");
-
-  projectLink.addEventListener("click", function () {
-    projectTab.style.display = "block";
-  });
-
-  projectCloseBtn.addEventListener("click", function () {
-    projectTab.style.display = "none";
-  });
-});
-
-// Project creation
-document.addEventListener("DOMContentLoaded", function () {
-  const projBtn = document.getElementById("project-btn");
-  const closeProjCtn = document.getElementById("close-prj-ctn");
-  const projCreation = document.getElementById("project-creation");
-  const projResult = document.getElementById("Project-output"); // Ensure this ID exists in your HTML
-
-  projBtn.addEventListener("click", function () {
-    projCreation.style.display = "block";
-    projBtn.style.display = "none";
-    closeProjCtn.style.display = "block";
-  });
-
-  closeProjCtn.addEventListener("click", function () {
-    projCreation.style.display = "none";
-    projBtn.style.display = "block";
-    closeProjCtn.style.display = "none";
-  });
-
-  // Date validation
-  const projStartDateInput = document.getElementById("proj-start-dd");
-  const projEndDateInput = document.getElementById("proj-end-dd");
-
-  const today = new Date().toISOString().split("T")[0];
-  projStartDateInput.setAttribute("min", today);
-  projEndDateInput.setAttribute("min", today);
-
-  projStartDateInput.addEventListener("change", function () {
-    projEndDateInput.setAttribute("min", this.value);
-  });
-
-  projEndDateInput.addEventListener("change", function () {
-    if (this.value < projStartDateInput.value) {
-      alert("End date cannot be before start date.");
-      this.value = "";
-    }
-  });
-
-  // Add sub-project functionality
-  document
-    .getElementById("add-sub-proj")
-    .addEventListener("click", function () {
-      const subProjBody = document.getElementById("sub-proj-body");
-
-      const subProjContainer = document.createElement("div");
-      subProjContainer.className = "sub-proj-input-container";
-
-      const subProjInput = document.createElement("input");
-      subProjInput.type = "text";
-      subProjInput.className = "sub-proj-input";
-      subProjInput.placeholder = "Sub-Project...";
-
-      const deleteButton = document.createElement("button");
-      deleteButton.className = "delete-sub-proj";
-      deleteButton.innerHTML = `<i class="uil uil-trash-alt"></i>`;
-      deleteButton.addEventListener("click", function () {
-        subProjBody.removeChild(subProjContainer);
+    // Listen for clicks on list items and display the result
+    const listItems = document.querySelectorAll('.box ul li');
+    listItems.forEach(item => {
+      item.addEventListener('click', function () {
+        result.textContent = `Selected Status: ${this.textContent}`;
       });
-
-      subProjContainer.appendChild(subProjInput);
-      subProjContainer.appendChild(deleteButton);
-      subProjBody.appendChild(subProjContainer);
     });
 
-  // Form submission
-  document
-    .getElementById("project-creation")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-  
-      const projName = document.getElementById("project-name").value;
-      const projDesc = document.getElementById("about-project").value;
-      const startDate = document.getElementById("proj-start-dd").value;
-      const endDate = document.getElementById("proj-end-dd").value;
-      const statusSelect = document.getElementById("status-select");
-      const status = statusSelect.options[statusSelect.selectedIndex].text;
-      const statusClass = statusSelect.value;
-  
-      if (!projName || !projDesc || !startDate || !endDate) {
-        alert("Please fill in all fields.");
-        return;
-      }
-  
-      // Create project card
-      const projCard = document.createElement("div");
-      projCard.className = "proj-card";
-  
-      const projTitle = document.createElement("h3");
-      projTitle.textContent = projName;
-  
-      const projDescription = document.createElement("p");
-      projDescription.textContent = projDesc;
-  
-      const projStartDate = document.createElement("span");
-      projStartDate.textContent = "Start Date: " + startDate + " ";
-  
-      const projEndDate = document.createElement("span");
-      projEndDate.textContent = "End Date: " + endDate + " ";
-  
-      const projStatus = document.createElement("span");
-      projStatus.className = `tag ${statusClass}`;
-      projStatus.textContent = status;
-  
-      projCard.appendChild(projTitle);
-      projCard.appendChild(projDescription);
-      projCard.appendChild(projStartDate);
-      projCard.appendChild(projEndDate);
-      projCard.appendChild(projStatus);
-  
-      const subProjects = document.getElementById("sub-proj-body").children;
-      if (subProjects.length > 0) {
-        const subProjList = document.createElement("ul");
-        for (let subProject of subProjects) {
-          const subProjInput = subProject.querySelector(".sub-proj-input");
-          if (subProjInput.value.trim()) {
-            const subProjItem = document.createElement("li");
-            subProjItem.textContent = subProjInput.value;
-            subProjList.appendChild(subProjItem);
-          }
-        }
-        projCard.appendChild(subProjList);
-      }
-  
-      projResult.appendChild(projCard);
-  
-      // Reset form and hide it
-      projCreation.reset();
-      projCreation.style.display = "none";
-      projBtn.style.display = "block";
-      closeProjCtn.style.display = "none";
-    });
-});
+    // Hide the box if clicking outside of it
+    document.addEventListener('click', function (event) {
+      const isClickInsideBox = box.contains(event.target);
+      const isClickOnButton = btn.contains(event.target);
 
-    </script>
+      // If the click is outside the box and not on the button, hide the box
+      if (!isClickInsideBox && !isClickOnButton) {
+        box.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>
