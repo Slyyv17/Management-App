@@ -105,25 +105,24 @@ body {
 }
 
 .nav-container {
-    width: 10em;
+    width: 15em;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--sec-clr);
-    padding: 2em 0;
+    padding: 2em 0.5em;
     box-shadow: 2px 2px 5px var(--bx-shadow);
-    flex-shrink: 0; /* Prevent shrinking */
 }
 
+/* Logo styling */
 .nav-container .logo {
     width: 2.5em;
     height: 2.5em;
     margin-bottom: 2em;
-    background-color: var(--sec-clr);
     border-radius: 50%;
     overflow: hidden;
-    border: none;
+    border: 1px solid var(--sec-clr);
     box-shadow: 2px 2px 5px var(--bx-shadow);
 }
 
@@ -133,38 +132,47 @@ body {
     object-fit: cover;
 }
 
+/* Navigation list styling */
 .nav-container ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 1em;
+    width: 100%;
 }
 
+/* Individual list items */
 .nav-container ul li {
     width: 100%;
-    text-align: center;
 }
 
+/* Align icons and text horizontally with grid */
 .nav-container ul li a {
     color: var(--tet-clr);
     text-decoration: none;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1.5em auto;
+    /* Ensure icon and text have fixed positions */
     align-items: center;
+    /* Vertically align icons and text */
     gap: 0.5em;
     font-size: 1rem;
-    padding: 0.5em;
+    padding: 0.75em 1em;
     transition: all 500ms;
-    -webkit-transition: all 500ms;
-    -moz-transition: all 500ms;
-    -ms-transition: all 500ms;
-    -o-transition: all 500ms;
+    border-radius: 0.5em;
 }
 
+/* Hover effects */
 .nav-container ul li a:hover {
     background-color: var(--pry-clr);
-    border-radius: 0.5em;
     color: var(--sec-clr);
+}
+
+/* Icons */
+.nav-container ul li a i {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 /* Styling the sub-menu */
