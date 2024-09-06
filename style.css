@@ -170,7 +170,7 @@ body {
 
 /* Icons */
 .nav-container ul li a i {
-    font-size: 1.5rem;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -593,11 +593,10 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 30em;
+    width: fit-content;
     height: fit-content;
-    background-color: #f1f1f1;
-    border: 1px solid #333;
+    background-color: var(--sec-clr);
+    border: 1px solid var(--sec-clr);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: height 0.5s ease;
 }
@@ -613,13 +612,14 @@ textarea::placeholder {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--sec-clr);
+    color: var(--rdm-clr);
     transition: all 500ms;
 }
 
 .status-box ul li:hover {
-    background-color: aqua;
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
     cursor: pointer;
 }
 
@@ -766,6 +766,17 @@ textarea::placeholder {
 
 .task-item strong {
     color: var(--main-clr);
+}
+
+.task-item .status-result span {
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    color: var(--sec-clr);
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
 }
 
 
