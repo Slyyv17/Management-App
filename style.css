@@ -184,7 +184,7 @@ body {
 .setting-menu .sub-menu {
     display: none;
     position: absolute;
-    top: 20%;
+    top: 5%;
     left: 90%;
     background-color: var(--sec-clr);
     border: 1px solid var(--sec-clr);
@@ -210,7 +210,7 @@ body {
 .sub-menu li {
     width: 100%;
     text-align: center;
-    padding: 0.1em 0.5em;
+    padding: 0.1em auto;
     transition: background-color 0.5s ease, color 0.3s ease;
     -webkit-transition: background-color 0.5s ease, color 0.3s ease;
     -moz-transition: background-color 0.5s ease, color 0.3s ease;
