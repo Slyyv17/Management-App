@@ -114,6 +114,7 @@ const aboutTaskInput = document.getElementById("about-task");
 const startDateInput = document.getElementById("start-date");
 const endDateInput = document.getElementById("end-date");
 
+// Task Submission and Validation
 nextBtn.addEventListener("click", function () {
   const taskName = taskNameInput.value.trim();
   const aboutTask = aboutTaskInput.value.trim();
@@ -135,17 +136,6 @@ nextBtn.addEventListener("click", function () {
 
   // Clear the task creation form
   clearTskCont();
-});
-
-// Disable Past Dates in Date Pickers
-const today = new Date().toISOString().split('T')[0];
-startDateInput.setAttribute('min', today);
-
-startDateInput.addEventListener('change', function () {
-  const selectedStartDate = startDateInput.value;
-  if (selectedStartDate) {
-    endDateInput.setAttribute('min', selectedStartDate);
-  }
 });
 
 // Function to display task result
@@ -173,7 +163,12 @@ function displayTaskResult(taskName, aboutTask, startDate, endDate, status) {
   // Append task result with status color
   taskResultContent.insertAdjacentHTML('beforeend', `
     <div class="task-item">
-      <h3>${taskName}</h3>
+      <div class="task-header">
+        <h3>${taskName}</h3>
+        <button class="more-btn"> 
+          <i class="uil uil-ellipsis-v"></i>
+        </button>
+      </div>
       <div class="task-pg">
         <p>${aboutTask}</p>
       </div>
@@ -181,8 +176,16 @@ function displayTaskResult(taskName, aboutTask, startDate, endDate, status) {
       <p><strong>End-date:</strong> ${endDate}</p>
       <p class="status-result"><strong>Status:</strong> <span style="background-color: ${statusColor};">${status}</span></p>
     </div>
+
+    <!-- More button options -->
+    <div class="more-options" style="display: none;">
+      <ul>
+        <li> Edit </li>
+        <li> Delete </li>
+      </ul>
+    </div>
   `);
-  
+
   tskResult.style.display = 'flex'; // Show the task result container
 }
 
@@ -202,5 +205,32 @@ document.addEventListener("click", function (e) {
 
   if (!isClickedInsideBox && !isClickedOnButton) {
     statusBox.style.display = "none";
+  }
+});
+
+// Hide the more options dropdown when clicking outside of it
+document.addEventListener("click", function (e) {
+  // Get all the currently visible more-options elements
+  const allMoreOptions = document.querySelectorAll(".more-options.show");
+
+  allMoreOptions.forEach((moreOptions) => {
+    const moreBtn = moreOptions.previousElementSibling.querySelector(".more-btn"); // Find the related more-btn
+
+    // Check if the click happened outside of both the more-options and the related more-btn
+    if (!moreOptions.contains(e.target) && !moreBtn.contains(e.target)) {
+      moreOptions.classList.remove("show"); // Hide the dropdown
+    }
+  });
+});
+
+
+// Event delegation for dynamically created "More" buttons
+taskResultContent.addEventListener("click", function (e) {
+  if (e.target.closest(".more-btn")) {
+    const taskItem = e.target.closest(".task-item");
+    const moreOptions = taskItem.nextElementSibling; // The next sibling is the .more-options container
+    if (moreOptions) {
+      moreOptions.style.display = moreOptions.style.display === "none" ? "block" : "none";
+    }
   }
 });
