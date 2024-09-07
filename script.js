@@ -114,6 +114,16 @@ const aboutTaskInput = document.getElementById("about-task");
 const startDateInput = document.getElementById("start-date");
 const endDateInput = document.getElementById("end-date");
 
+// Set minimum date for start date input to today
+const today = new Date().toISOString().split('T')[0];
+startDateInput.setAttribute('min', today);
+
+// Update end date minimum based on start date
+startDateInput.addEventListener('change', function () {
+  const startDate = new Date(startDateInput.value).toISOString().split('T')[0];
+  endDateInput.setAttribute('min', startDate);
+});
+
 // Task Submission and Validation
 nextBtn.addEventListener("click", function () {
   const taskName = taskNameInput.value.trim();
