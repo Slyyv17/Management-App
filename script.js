@@ -192,6 +192,7 @@ function displayTaskResult(taskName, aboutTask, startDate, endDate, status) {
       <ul>
         <li> Edit </li>
         <li> Delete </li>
+        <li> Priority </li>
       </ul>
     </div>
   `);
