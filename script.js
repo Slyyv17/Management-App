@@ -245,3 +245,56 @@ taskResultContent.addEventListener("click", function (e) {
     }
   }
 });
+
+
+// for projects 
+const prjNameInput = document.getElementById("prj-name");
+const aboutPrjInput = document.getElementById("about-prj");
+const startDatePrjInput = document.getElementById("start-date");
+const endDatePrjInput = document.getElementById("end-date");
+const prjStatusBtn = document.getElementById("status-btn");
+const prjResultContent = document.querySelector(".prj-result-content");
+
+const prjNextBtn = document.querySelector(".next-btn"); 
+
+// for Project Date
+const prjToday = new Date().toISOString().split('T')[0];
+startDateInput.setAttribute('min', today);
+
+// Update end date minimum based on start date
+startDatePrjInput.addEventListener('change', function () {
+  const startDatePrj = new Date(startDatePrjInput.value).toISOString().split('T')[0];
+  endDatePrjInput.setAttribute('min', startDatePrj);
+});
+
+prjNextBtn.addEventListener("click", function () {
+  const prjName = prjNameInput.value.trim();
+  const aboutPrj = aboutPrjInput.value.trim();
+  const startDatePrj = startDatePrjInput.value;
+  const endDatePrj = endDatePrjInput.value;
+
+  if (!prjName || !aboutPrj || !startDatePrj || !endDatePrj) {
+    alert(`Please fill out all fields before proceeding`);
+    return;
+  }
+  else {
+    displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj);
+    clearPrjCont();
+  }
+});
+
+// clear project form
+function clearPrjCont() {
+  prjNameInput.value = '';
+  aboutPrjInput.value = '';
+  startDatePrjInput.value = '';
+  endDatePrjInput.value = '';
+  selectedStatus = '';
+}
+
+// function to display project result 
+function displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj) {
+  prjResultContent.insertAdjacentHTML('beforeend', `
+
+  `);
+}

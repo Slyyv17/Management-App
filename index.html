@@ -153,6 +153,37 @@
             <button class="close-btn">
                 <i class="uil uil-times"></i>
             </button>
+
+            <div class="work-flow">
+                <div class="name-box">
+                    <input type="text" id="prj-name" placeholder="task name...">
+                </div>
+            
+                <div class="about-box">
+                    <textarea id="about-prj" rows="2" placeholder="about task..."></textarea>
+                </div>
+            
+                <div class="date-box">
+                    <input type="date" id="start-date">
+                </div>
+            
+                <div class="date-box">
+                    <input type="date" id="end-date">
+                </div>
+            
+                <!-- The status -->
+                <button id="status-btn">Status</button>
+                <div style="display: none;" class="status-box">
+                    <ul>
+                        <li>Not Started</li>
+                        <li>In Progress</li>
+                        <li>Completed</li>
+                        <li>On Hold</li>
+                    </ul>
+                </div>
+            
+                <button class="next-btn">create</button>
+            </div>
         </div>
     </div>
     
@@ -172,10 +203,18 @@
                 <i class="uil uil-times"></i>
             </button>
         </div>
-        <div class="task-result-content">
-            
-        </div>
+        <div class="task-result-content"></div>
     </div>
+
+    <!-- Project Result -->
+     <div class="prj-result" style="display: none;">
+        <div class="close-box"></div>
+            <button class="close-btn">
+                <i class="uil uil-times"></i>
+            </button>
+        </div>
+        <div class="prj-result-content"></div>
+     </div>
 
 
     <script src="script.js"></script>
