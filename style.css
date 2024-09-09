@@ -399,7 +399,6 @@ main .side-article {
     height: fit-content;
     /* Align close button to the right */
     align-items: center;
-    padding: 0.2em 0.2em 0 0;
     border-bottom: 1px dashed black;
     /* Instead of full border */
     gap: 1em;
@@ -854,6 +853,12 @@ textarea::placeholder {
 .more-options ul li:hover {
     background-color: var(--pry-clr);
     color: var(--sec-clr);
+}
+
+/* for the project */
+.prj-cont {
+    display: flex;
+    justify-content: center;
 }
 
 /* Mobile responsiveness */
