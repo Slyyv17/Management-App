@@ -247,54 +247,120 @@ taskResultContent.addEventListener("click", function (e) {
 });
 
 
-// for projects 
+// Getting elements for project functionality
+const prjNextBtn = document.querySelector(".next-btn-prj");
 const prjNameInput = document.getElementById("prj-name");
 const aboutPrjInput = document.getElementById("about-prj");
-const startDatePrjInput = document.getElementById("start-date");
-const endDatePrjInput = document.getElementById("end-date");
-const prjStatusBtn = document.getElementById("status-btn");
+const startDatePrjInput = document.getElementById("start-date-prj");
+const endDatePrjInput = document.getElementById("end-date-prj");
+const prjStatusBtn = document.getElementById("status-btn-prj");
+const prjStatusBox = document.querySelector(".status-box-prj");
 const prjResultContent = document.querySelector(".prj-result-content");
+let selectedPrjStatus = "";
 
-const prjNextBtn = document.querySelector(".next-btn"); 
-
-// for Project Date
+// Set the current date as the minimum start date
 const prjToday = new Date().toISOString().split('T')[0];
-startDateInput.setAttribute('min', today);
+startDatePrjInput.setAttribute('min', prjToday);
 
-// Update end date minimum based on start date
+// Update the minimum end date based on the start date selection
 startDatePrjInput.addEventListener('change', function () {
   const startDatePrj = new Date(startDatePrjInput.value).toISOString().split('T')[0];
   endDatePrjInput.setAttribute('min', startDatePrj);
 });
 
+// Handling project form submission
 prjNextBtn.addEventListener("click", function () {
-  const prjName = prjNameInput.value.trim();
-  const aboutPrj = aboutPrjInput.value.trim();
-  const startDatePrj = startDatePrjInput.value;
-  const endDatePrj = endDatePrjInput.value;
+    const prjName = prjNameInput.value.trim();
+    const aboutPrj = aboutPrjInput.value.trim();
+    const startDatePrj = startDatePrjInput.value;
+    const endDatePrj = endDatePrjInput.value;
 
-  if (!prjName || !aboutPrj || !startDatePrj || !endDatePrj) {
-    alert(`Please fill out all fields before proceeding`);
-    return;
-  }
-  else {
-    displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj);
+    if (!prjName || !aboutPrj || !startDatePrj || !endDatePrj) {
+        alert("Please fill out all fields before proceeding.");
+        return;
+    }
+    if (!selectedPrjStatus) {
+        alert("Please select a status.");
+        return;
+    }
+
+    // Display project result
+    displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj, selectedPrjStatus);
+
+    // Clear the project form
     clearPrjCont();
-  }
 });
 
-// clear project form
+// Function to display the project result
+function displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj, status) {
+    let statusColor = '';
+
+    // Set color based on selected status
+    switch (status) {
+        case 'Not Started':
+            statusColor = 'gray';
+            break;
+        case 'In Progress':
+            statusColor = 'blue';
+            break;
+        case 'Completed':
+            statusColor = 'green';
+            break;
+        case 'On Hold':
+            statusColor = 'orange';
+            break;
+        default:
+            statusColor = 'black'; // Default color
+    }
+
+    // Append project result with status color
+    prjResultContent.insertAdjacentHTML('beforeend', `
+        <div class="prj-item" style="border-left: 4px solid ${statusColor};">
+            <div class="prj-header">
+                <h3>${prjName}</h3>
+                <button class="more-btn"> 
+                  <i class="uil uil-ellipsis-v"></i>
+                </button>
+            </div>
+            <div class="prj-pg">
+                <p>${aboutPrj}</p>
+            </div>
+            <p><strong>Start-date:</strong> ${startDatePrj}</p>
+            <p><strong>End-date:</strong> ${endDatePrj}</p>
+            <p class="status-result"><strong>Status:</strong> <span style="background-color: ${statusColor};">${status}</span></p>
+        </div>
+
+        <!-- More button options -->
+        <div class="more-options" style="display: none;">
+            <ul>
+                <li>Edit</li>
+                <li>Delete</li>
+                <li>Priority</li>
+            </ul>
+        </div>
+    `);
+}
+
+// Clear the project form after submission
 function clearPrjCont() {
-  prjNameInput.value = '';
-  aboutPrjInput.value = '';
-  startDatePrjInput.value = '';
-  endDatePrjInput.value = '';
-  selectedStatus = '';
+    prjNameInput.value = '';
+    aboutPrjInput.value = '';
+    startDatePrjInput.value = '';
+    endDatePrjInput.value = '';
+    selectedPrjStatus = '';
 }
 
-// function to display project result 
-function displayPrjResult(prjName, aboutPrj, startDatePrj, endDatePrj) {
-  prjResultContent.insertAdjacentHTML('beforeend', `
+// Toggle the project status box
+prjStatusBtn.addEventListener("click", function () {
+    prjStatusBox.style.display = prjStatusBox.style.display === "none" ? "block" : "none";
+});
 
-  `);
-}
+// Select a project status from the list
+const prjListItems = document.querySelectorAll('.status-box-prj ul li');
+prjListItems.forEach(item => {
+    item.addEventListener('click', function () {
+        selectedPrjStatus = this.textContent; // Store the selected project status
+        console.log("Selected project status: " + selectedPrjStatus);
+        prjStatusBox.style.display = "none"; // Hide the box after selection
+    });
+});

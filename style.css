@@ -524,19 +524,7 @@ textarea::placeholder {
     box-shadow: 0px 0px 5px var(--bx-shadow);
 }
 
-/* Date container hidden initially */
-.date-container {
-    width: 100%;
-    padding: 1em;
-    border: 1px dashed black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Hidden by default, shown on clicking next */
-    flex-direction: column;
-    gap: 1em;
-}
-
+/* for dates */
 .work-flow .date-box {
     width: 100%;
     height: fit-content;
@@ -859,6 +847,27 @@ textarea::placeholder {
 .prj-cont {
     display: flex;
     justify-content: center;
+}
+
+/* For Project Creation */
+
+/* Next button styling */
+.next-btn {
+    width: 100%;
+    max-width: 20%;
+    padding: 0.7em;
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
+    font-size: 1.1rem;
+    border: 1px solid var(--sec-clr);
+    border-radius: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.next-btn:hover {
+    box-shadow: 0px 0px 5px var(--bx-shadow);
 }
 
 /* Mobile responsiveness */
