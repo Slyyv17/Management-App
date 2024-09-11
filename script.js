@@ -48,7 +48,7 @@ const closeBtns = document.querySelectorAll(".close-btn");
 
 closeBtns.forEach(btn => {
   btn.addEventListener("click", function () {
-    const parentContainer = this.closest('.tsk-cont, .prj-cont, .note-cont, .tsk-result');
+    const parentContainer = this.closest('.tsk-cont, .prj-cont, .note-cont, .tsk-result, .prj-result');
     if (parentContainer) {
       parentContainer.style.display = "none";
     }
@@ -82,6 +82,7 @@ tskResultBtn.addEventListener("click", function () {
   tskCont.style.display = "none";
   prjCont.style.display = "none";
   noteCont.style.display = "none";
+  prjResultBox.style.display = "none";
 });
 
 // Status Selection
@@ -255,6 +256,8 @@ const startDatePrjInput = document.getElementById("start-date-prj");
 const endDatePrjInput = document.getElementById("end-date-prj");
 const prjStatusBtn = document.getElementById("status-btn-prj");
 const prjStatusBox = document.querySelector(".status-box-prj");
+const prjResultBtn = document.querySelector(".prj-result-btn");
+const prjResultBox = document.querySelector(".prj-result");
 const prjResultContent = document.querySelector(".prj-result-content");
 let selectedPrjStatus = "";
 
@@ -364,3 +367,12 @@ prjListItems.forEach(item => {
         prjStatusBox.style.display = "none"; // Hide the box after selection
     });
 });
+
+// To be able to open the project result container
+prjResultBtn.addEventListener("click", function () {
+  prjResultBox.style.display = "flex";
+  taskResultContent.style.display = "none";
+  tskCont.style.display = "none";
+  prjCont.style.display = "none";
+  noteCont.style.display = "none";
+})

@@ -628,7 +628,8 @@ textarea::placeholder {
 }
 
 /* Task Result Container */
-.tsk-result {
+:where(.tsk-result,
+.prj-result) {
     width: 100%;
     max-width: 40em;
     max-height: 80vh;
@@ -850,9 +851,79 @@ textarea::placeholder {
 }
 
 /* For Project Creation */
+/* Date input fields */
+.date-box :where(#end-date-prj, #start-date-prj) {
+    width: 100%;
+    height: 2.5em;
+    padding: 0.5em;
+    border: 1px solid var(--sec-clr);
+    border-radius: 1.1em;
+    box-shadow: 2px 2px 10px var(--bx-shadow);
+    -webkit-border-radius: 1.1em;
+    -moz-border-radius: 1.1em;
+    -ms-border-radius: 1.1em;
+    -o-border-radius: 1.1em;
+    font-family: var(--ff);
+    text-transform: uppercase;
+}
 
-/* Next button styling */
-.next-btn {
+.date-box :is(#end-date-prj, #start-date-prj):focus {
+    outline: none;
+}
+
+/* status container */
+#status-btn-prj {
+    width: 7em;
+    height: 5em;
+    padding: 0.5em;
+    border: 1px solid var(--pry-clr);
+    background-color: var(--pry-clr);
+    border-radius: 1.5em;
+    color: var(--sec-clr);
+    font-family: var(--ff);
+    -webkit-border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -ms-border-radius: 1.5em;
+    -o-border-radius: 1.5em;
+    cursor: pointer;
+}
+
+.status-box-prj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--sec-clr);
+    border: 1px solid var(--sec-clr);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: height 0.5s ease;
+}
+
+.status-box-prj ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-direction: column;
+}
+
+.status-box-prj ul li {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: var(--sec-clr);
+    color: var(--rdm-clr);
+    transition: all 500ms;
+}
+
+.status-box-prj ul li:hover {
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
+    cursor: pointer;
+}
+
+/* Next button styling for projects */
+.next-btn-prj {
     width: 100%;
     max-width: 20%;
     padding: 0.7em;
@@ -866,8 +937,184 @@ textarea::placeholder {
     transition: all 0.5s;
 }
 
-.next-btn:hover {
+.next-btn-prj:hover {
     box-shadow: 0px 0px 5px var(--bx-shadow);
+}
+
+
+/* Project result close button container */
+.prj-result .close-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-bottom: 1px dashed #000;
+    /* Changed black to #000 for consistency */
+    gap: 1em;
+}
+
+/* Close button styling */
+.prj-result .close-btn {
+    width: 3em;
+    height: 1.5em;
+    background-color: var(--delete-btn);
+    /* Use a variable for color */
+    color: var(--sec-clr);
+    /* Use a variable for secondary color */
+    font-size: 1.2rem;
+    border: 1px solid var(--delete-btn);
+    border-radius: 0.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Change background on hover */
+.prj-result .close-btn:hover {
+    background-color: #d9534f;
+    /* Example hover color */
+}
+
+/* Project Result Content Styling */
+.prj-result .prj-result-content {
+    width: 100%;
+    max-height: 25em;
+    overflow-y: auto;
+    /* Enable scrolling when content exceeds the height */
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px dashed red;
+    /* This can be changed if needed */
+    gap: 0.5em;
+    background-color: #f9f9f9;
+    /* Background color for content area */
+}
+
+/* Individual project items (optional, dynamic content style) */
+.prj-result .prj-item {
+    width: 100%;
+    padding: 1em;
+    background-color: #fff;
+    border-left: 4px solid #000;
+    /* Dynamic border color can be applied */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* scroll bar for the task result content */
+.prj-result-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.prj-result-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.prj-result-content::-webkit-scrollbar-thumb {
+    background-color: var(--bg-drop);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: none;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+    -moz-transition: all 500ms;
+    -ms-transition: all 500ms;
+    -o-transition: all 500ms;
+}
+
+.prj-result-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--bx-shadow);
+}
+
+/* Individual Task Item Styling */
+.prj-item {
+    width: 100%;
+    background-color: var(--tsk-ctn-bg);
+    border: 1px solid var(--tsk-ctn-bg);
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prj-item .prj-header {
+    width: 100%;
+    border: 1px dashed black;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prj-item .prj-header h3 {
+    font-size: 1.5em;
+    /* margin-bottom: 0.1em; */
+    color: var(--main-clr);
+}
+
+.prj-header .more-btn {
+    width: 3em;
+    height: auto;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: var(--main-clr);
+    border: none;
+}
+
+
+.prj-item .prj-pg {
+    border: none;
+    border-radius: 0.5em;
+    width: 100%;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    color: var(--rdm-clr);
+    display: -webkit-box;
+    /* Required for text truncation */
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prj-pg p {
+    margin: 0.5em 0;
+    font-size: 1em;
+    color: var(--rdm-clr);
+}
+
+.prj-item strong {
+    color: var(--main-clr);
+}
+
+.prj-item .status-result span {
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    color: var(--sec-clr);
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
 }
 
 /* Mobile responsiveness */
