@@ -171,34 +171,44 @@ function displayTaskResult(taskName, aboutTask, startDate, endDate, status) {
       statusColor = 'black'; // Default color
   }
 
-  // Append task result with status color
-  taskResultContent.insertAdjacentHTML('beforeend', `
-    <div class="task-item">
-      <div class="task-header">
-        <h3>${taskName}</h3>
-        <button class="more-btn"> 
-          <i class="uil uil-ellipsis-v"></i>
-        </button>
+  // Check if taskResultContent is found
+  if (taskResultContent) {
+    // Append task result with status color
+    taskResultContent.insertAdjacentHTML('beforeend', `
+      <div class="task-item">
+        <div class="task-header">
+          <h3>${taskName}</h3>
+          <button class="more-btn"> 
+            <i class="uil uil-ellipsis-v"></i>
+          </button>
+        </div>
+        <div class="task-pg">
+          <p>${aboutTask}</p>
+        </div>
+        <p><strong>Start-date:</strong> ${startDate}</p>
+        <p><strong>End-date:</strong> ${endDate}</p>
+        <p class="status-result"><strong>Status:</strong> <span style="background-color: ${statusColor};">${status}</span></p>
       </div>
-      <div class="task-pg">
-        <p>${aboutTask}</p>
+
+      <!-- More button options -->
+      <div class="more-options" style="display: none;">
+        <ul>
+          <li>Edit</li>
+          <li>Delete</li>
+          <li>Priority</li>
+        </ul>
       </div>
-      <p><strong>Start-date:</strong> ${startDate}</p>
-      <p><strong>End-date:</strong> ${endDate}</p>
-      <p class="status-result"><strong>Status:</strong> <span style="background-color: ${statusColor};">${status}</span></p>
-    </div>
+    `);
+  } else {
+    console.error('taskResultContent not found');
+  }
 
-    <!-- More button options -->
-    <div class="more-options" style="display: none;">
-      <ul>
-        <li> Edit </li>
-        <li> Delete </li>
-        <li> Priority </li>
-      </ul>
-    </div>
-  `);
-
-  tskResult.style.display = 'flex'; // Show the task result container
+  // Ensure tskResult is visible
+  if (tskResult) {
+    tskResult.style.display = 'flex'; // Show the task result container
+  } else {
+    console.error('tskResult container not found');
+  }
 }
 
 // Function to clear the task form
@@ -209,6 +219,16 @@ function clearTskCont() {
   endDateInput.value = '';
   selectedStatus = ''; // Reset the selected status
 }
+
+// Debugging
+document.addEventListener("DOMContentLoaded", function () {
+  if (!taskResultContent) {
+    console.error('taskResultContent is not found');
+  }
+  if (!tskResult) {
+    console.error('tskResult is not found');
+  }
+});
 
 // Hide the status box if clicking outside of it
 document.addEventListener("click", function (e) {
