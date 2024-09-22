@@ -48,7 +48,7 @@ const closeBtns = document.querySelectorAll(".close-btn");
 
 closeBtns.forEach(btn => {
   btn.addEventListener("click", function () {
-    const parentContainer = this.closest('.tsk-cont, .prj-cont, .note-cont, .tsk-result, .prj-result');
+    const parentContainer = this.closest('.tsk-cont, .prj-cont, .note-cont, .tsk-result, .prj-result, .note-result');
     if (parentContainer) {
       parentContainer.style.display = "none";
     }
@@ -395,4 +395,110 @@ prjResultBtn.addEventListener("click", function () {
   tskCont.style.display = "none";
   prjCont.style.display = "none";
   noteCont.style.display = "none";
+})
+
+// Hide the project status box if clicking outside of it
+document.addEventListener("click", function (e) {
+  const isClickedInsidePrjBox = prjStatusBox.contains(e.target);
+  const isClickedOnPrjButton = prjStatusBtn.contains(e.target);
+
+  if (!isClickedInsidePrjBox && !isClickedOnPrjButton) {
+    prjStatusBox.style.display = "none";
+  }
+});
+
+// Hide the note status box if clicking outside of it
+document.addEventListener("click", function (e) {
+  const isClickedInsideNoteBox = noteResultContent.contains(e.target);
+  const isClickedOnNoteButton = note_create_btn.contains(e.target);
+
+  if (!isClickedInsideNoteBox && !isClickedOnNoteButton) {
+    noteResultContent.style.display = "none";
+  }
+});
+
+// For Note container
+//Getting elements for note functionality
+const note_create_btn = document.querySelector(".note-create-btn");
+const note_title = document.getElementById("note-title");
+const note_content = document.getElementById("subject");
+const noteResultBox = document.querySelector(".note-result");
+const noteResultContent = document.querySelector(".note-result-content");
+const noteResultBtn = document.querySelector(".note-result-btn");
+
+const noteTitleInput = note_title.va;
+const noteContentInput = note_content;
+
+// Handling note form submission
+function createNote() {
+  const noteTitle = note_title.value.trim();
+  const noteContent = note_title.value.trim();
+
+  if (!noteTitle || !noteContent) {
+    alert("Please fill out all fields before proceeding.")
+    return;
+  }
+
+  // Display note result
+  displayNoteResult(noteTitle, noteContent);
+
+  clearNoteCont();
+}
+
+// Function to display the note result
+function displayNoteResult(noteTitle, noteContent) {
+  noteResultContent.insertAdjacentHTML('beforeend', `
+    <div class="note-item">
+      <h3>${noteTitle}</h3>
+      <p>${noteContent}</p>
+    </div>
+  `);
+}
+
+// function to clear the note form
+function clearNoteCont() {
+  note_title.value = '';
+  note_content.value = '';
+}
+
+// Adding event listener to the create note button
+note_create_btn.addEventListener("click", createNote);
+
+// Hide the note result content if clicking outside of it
+document.addEventListener("click", function (e) {
+  const isClickedInsideNoteBox = noteResultContent.contains(e.target);
+  const isClickedOnNoteButton = note_create_btn.contains(e.target);
+
+  if (!isClickedInsideNoteBox && !isClickedOnNoteButton) {
+    noteResultContent.style.display = "none";
+  }
+});
+
+// To be able to open the note result container
+noteResultBtn.addEventListener("click", function () {
+  noteResultContent.style.display = "flex";
+  tskCont.style.display = "none";
+  prjCont.style.display = "none";
+  noteCont.style.display = "none";
+  prjResultBox.style.display = "none";
+});
+
+// Event delegation for dynamically created "More" buttons in notes
+noteResultContent.addEventListener("click", function (e) {
+  if (e.target.closest(".more-btn")) {
+    const noteItem = e.target.closest(".note-item");
+    const moreOptions = noteItem.nextElementSibling; // The next sibling is the .more-options container
+    if (moreOptions) {
+      moreOptions.style.display = moreOptions.style.display === "none" ? "block" : "none";
+    }
+  }
+});
+
+// Add a functionality to display the note result container
+noteResultBtn.addEventListener("click", function () { 
+  noteResultBox.style.display = "flex";
+  tskCont.style.display = "none";
+  prjCont.style.display = "none";
+  noteCont.style.display = "none";
+  prjResultBox.style.display = "none";
 })

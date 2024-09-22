@@ -629,7 +629,7 @@ textarea::placeholder {
 
 /* Task Result Container */
 :where(.tsk-result,
-.prj-result) {
+.prj-result, .note-result) {
     width: 100%;
     max-width: 40em;
     max-height: 80vh;
@@ -1115,6 +1115,76 @@ textarea::placeholder {
     -moz-border-radius: 1em;
     -ms-border-radius: 1em;
     -o-border-radius: 1em;
+}
+
+/* Note container styling */
+.note-cont .note-create-btn {
+    width: 100%;
+    max-width: 20%;
+    padding: 0.7em;
+    background-color: var(--pry-clr);
+    color: var(--sec-clr);
+    font-size: 1.1rem;
+    border: 1px solid var(--pry-clr);    
+    border-radius: 1em;
+    cursor: pointer;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.note-cont .note-create-btn:hover {
+    box-shadow: 0px 0px 5px var(--bx-shadow);
+}
+
+.note-result .close-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-bottom: 1px dashed #000;
+    /* Changed black to #000 for consistency */
+    gap: 1em;
+}
+
+.note-result .note-result-content {
+    width: 100%;
+    max-height: 25em;
+    overflow-y: auto;
+    /* Enable scrolling when content exceeds the height */
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px dashed red;
+    /* This can be changed if needed */
+    gap: 0.5em;
+    background-color: var(--sec-clr);
+    /* Background color for content area */
+}
+.note-item {
+    width: 100%;
+    background-color: var(--sec-clr);
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.note-item h3 {
+    font-size: 1.5em;
+    color: var(--main-clr);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.note-item p {
+    font-size: 1em;
+    color: var(--rdm-clr);
 }
 
 /* Mobile responsiveness */
